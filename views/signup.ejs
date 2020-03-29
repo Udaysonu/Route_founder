@@ -1,0 +1,32 @@
+<link rel='stylesheet' type='text/css' href='/css/signuser.css'>
+<div id='outer'>
+<div id='container'>
+	<form action='/auth/createexpert' method='post'>
+		<h2 style='color:white'>Sign Up</h2>
+		<div class='input'>
+			<i class="fas fa-user"></i>
+			<input name='name' placeholder="Username" type='text' >
+		</div>
+	<div class='input'>
+		<i class="fas fa-at"></i>
+		<input name='email' placeholder="Email" type='email' >
+    </div>
+    <div class='input'>
+		<i class="fas fa-phone"></i>
+		<input name='phone' placeholder="Mobile Number" type='text' >
+	</div>
+	<div class='input'>
+		 
+		<i class="fas fa-key"></i></i> <input type='password' placeholder="Password"  name='password'>
+	</div> 
+	<div class='input'>
+		 
+		<i class="fas fa-key"></i><input type='password' placeholder="Confirm-password" name='re_password'>
+    </div> 
+  
+    <div><small>Already have an Account?<a href='/user/signin'> click here</a>                </small></div>
+    <div class='input inline'><button>Sign Up</button></div>
+</form>
+</div>
+</div>
+
