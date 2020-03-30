@@ -37,3 +37,8 @@ module.exports.createuser=async function(req,res){
     })
     res.redirect("/user/signin")
 }
+
+//
+module.exports.routesearch=function(req,res){
+    res.render("search");
+}

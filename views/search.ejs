@@ -1,0 +1,66 @@
+<link rel='stylesheet' type='text/css' href='/css/signuser.css'>
+<div id='outer' class='inline' style='height:auto'>
+    
+<div id='container'>
+    <form action='/user/search' method='post'>
+        <div class='input inline'> <select name='job'>
+            <option> Banglore</option>
+            <option> Hyderabad</option>
+            <option> Chennai </option>
+            <option> New Delhi </option>
+            <option>Mumbai</option>
+            <option>Bhopal</option>
+            <option>Kolkata</option>
+            <option>Amritsar</option>
+            <option>Guahati</option>
+        </select></div>
+        
+       
+        <div class='input inline'> <select name='job'>
+            <option> Banglore</option>
+            <option> Hyderabad</option>
+            <option> Chennai </option>
+            <option> New Delhi </option>
+            <option>Mumbai</option>
+            <option>Bhopal</option>
+            <option>Kolkata</option>
+            <option>Amritsar</option>
+            <option>Guahati</option>
+        </select></div>
+       <div class='input inline' >
+        <button ><i class='fa fa-search'></i></button>
+       </div>
+    </form>
+    
+    </div>
+    
+
+</div>
+<div id='outer2' style='height: auto;'>
+
+ 
+    
+    <%if(locals.details){%>
+        <%for(detail of details){%>
+       <div   id='container' class='full_width' style=' margin: 10px;'>
+        <div id='detail_container' style='text-align:center;'>
+          <div class='list'> <img width="100" height="120" src=" <%=detail.avatar%>"><br></div>
+           <div class='list'><b>Name : </b> <%=detail.name%><br>
+            <b>Contact : </b><%=detail.phone%><br>
+            <b>Email : </b><%=detail.email%><br>
+            <b>Location : </b><%=detail.location%><br>
+        <b> Joined On :</b>  <%var date=""+detail.createdAt+''%>
+        <%for(i of date){%><%if(i=='G'){break;}%><%=i%><%}%>
+     </div>
+            <div>Ratings: <i class='fa fa-star'></i><i class='fa fa-star'></i><i class='fa fa-star'></i><i class='fa fa-star-half'></i><i class='fa fa-star-full-empty'></i> <br></div>
+        </div>
+        
+       </div>
+      
+       <%}%>
+        
+   <%}else{%>    
+    <div id='container' class='full_width'><h1>Sorry No Expert in your area</h1></div>
+    <%}%>
+</div>
+   
