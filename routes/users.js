@@ -6,9 +6,11 @@ const passport=require("../config/passport");
 router.get('/signin',usercontroller.signin);
 router.get("/signup",usercontroller.signup);
 router.post("/createuser",usercontroller.createuser);
-router.post("/routesearch",passport.authenticate('local',{
+router.post("/authenticate",passport.authenticate('local',{
     failureRedirect:"back"
-}),usercontroller.routesearch);
+}),usercontroller.authenticate);
+router.get("/routesearch",usercontroller.routesearch);
+router.get("/logout",usercontroller.logout)
 router.get('/',function(req,res){
     res.send("404 page not found");
 })

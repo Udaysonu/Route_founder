@@ -1,0 +1,18 @@
+<link type='text/css' rel='stylesheet' href='/css/header.css'>
+<div class="header">
+    <a href="#default" class="logo">Go<h1 style='display: inline;'>BIG</h1>go</a>
+    <div class="header-right">
+      <a class="active" href="#home">Search</a>
+      <a class="yellow" href="#contact">Contact</a>
+      <a  class="green" href="#about">About</a>
+      <%if(locals.user){%>
+        <a href='/user/searchpage'>Search Expert</a>
+        <a href='/user/updateprofile'>Update Profile</a>
+        <a href='/user/logout'>Sign Out</a>
+      <%}else{%>
+        <a href='/user/signin'>Sign In</a>
+        <a href='/user/signup'>Sign Up</a>
+      <%}%>
+    </div>
+    
+  </div>
