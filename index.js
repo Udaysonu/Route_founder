@@ -20,7 +20,7 @@ app.use('/uploads',express.static(__dirname+'/uploads'))
 //setting up required middlewared
 app.use(cookieParser());
 
-app.use(express.urlencoded());
+app.use(express.urlencoded({extended:true}));
 app.use(expressLayouts);
 app.use(express.static("./assets"));
 app.set("view engine",'ejs');
