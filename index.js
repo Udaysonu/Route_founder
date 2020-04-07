@@ -14,8 +14,8 @@ var cookieParser = require('cookie-parser');
 
 const expressLayouts=require("express-ejs-layouts");
 const flashmiddleware=require("./middleware/flassmiddleware")
-const server=require("http").Server(app);
-const io=require("./config/socketServer").chatserver(server);
+// const server=require("http").Server(app);d
+// const io=require("./config/socketServer").chatserver(server);
 app.use('/uploads',express.static(__dirname+'/uploads'))
 //setting up required middlewared
 app.use(cookieParser());
