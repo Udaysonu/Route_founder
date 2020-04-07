@@ -1,0 +1,37 @@
+ 
+<div class='outer outer-r'>
+    <div class='container container-r'>
+        <form action='/user/update_user' enctype="multipart/form-data" method='post'>
+          
+            <h2 style='color:white'>Update</h2>
+            <img width=70 height=70 src="<%=user.avatar%>">
+            <div class='input'>
+                <i class="fas fa-user"></i>
+                <input class="input_tag" name='name' placeholder="Username" value="<%=user.name%>" type='text'>
+            </div>
+
+            <div class='input'>
+                <i class="fas fa-user"></i>
+                <input class='input_tag' name='avatar' type="file"  placeholder="file"  >
+            </div>
+        
+        <div class='input'>
+            <i class="fas fa-phone"></i>
+            <input name='mobile' class="input_tag" placeholder="Mobile Number" value="<%=user.mobile%>" type='text' >
+        </div>
+        <div class='input'>
+             
+            <i class="fas fa-key"></i></i> <input  class="input_tag" type='password' placeholder="Password"  name='password'>
+        </div> 
+        <div class='input'>
+             
+            <i class="fas fa-key"></i><input class="input_tag" type='password' placeholder="Confirm-password" name='re_password'>
+        </div> 
+      
+         
+        <div class='input inline'><button class='btn_' type="submit">Update</button></div>
+    </form>
+    </div>
+    </div>
+    
+    

@@ -1,18 +1,55 @@
 <link type='text/css' rel='stylesheet' href='/css/header.css'>
-<div class="header">
-    <a href="#default" class="logo">Go<h1 style='display: inline;'>BIG</h1>go</a>
-    <div class="header-right">
-      <a class="active" href="#home">Search</a>
-      <a class="yellow" href="#contact">Contact</a>
-      <a  class="green" href="#about">About</a>
-      <%if(locals.user){%>
-        <a href='/user/searchpage'>Search Expert</a>
-        <a href='/user/updateprofile'>Update Profile</a>
-        <a href='/user/logout'>Sign Out</a>
-      <%}else{%>
-        <a href='/user/signin'>Sign In</a>
-        <a href='/user/signup'>Sign Up</a>
-      <%}%>
+<div id="nav_header">
+  <nav class="navbar mobi_header navbar-expand-lg navbar-dark  ">
+    <a class="navbar-brand" href="#"><button type="button" class="btn btn-warning">
+      <span class="badge badge-danger">90</span>
+      BIG <span class="badge badge-success">90</span>
+      <span class="sr-only">unread messages</span>
+    </button></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+       <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item active">
+          
+          <a class="nav-link" href="/user/routesearch">       <button type="button" class="btn btn-primary">Home</button>            <span class="sr-only">(current)</span></a>
+        </li>
+        <%if(locals.user){%>
+        <%if(user.email=="udaysonubakka123@gmail.com"){%>
+          <li class="nav-item">
+            <a class="nav-link" href="/cc/chatroom"><button type="button" class="btn btn-outline-light">CustomerCare</button>          </a>
+          </li>
+          <%}else{%>
+            <li class="nav-item">
+              <a class="nav-link" href="/user/chatroom"><button type="button" class="btn btn-outline-light">CustomerCare</button>          </a>
+            </li>
+        <%}%>  
+       
+        <li class="nav-item">
+          <a class="nav-link" href="/user/update"><button type="button" class="btn btn-outline-light">UpdateProfile</button>          </a>
+        </li>
+        <%}%>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto mt-2 my-lg-0">
+        <%if(locals.user){%> 
+          <img style="height: 3rem;width: 3rem;border-radius: 50%;" src="<%=user.avatar%>">
+          <li class="nav-item">
+            <a class="nav-link" href="/user/logout"><button type="button" class="btn btn-outline-warning">Logout</button>          </a>
+          </li>
+         <%}else{%> 
+
+        <li class="nav-item">
+          <a class="nav-link" href="/user/signin"><button type="button" class="btn btn-outline-warning">Sign In</button>          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/user/signup"><button type="button" class="btn btn-outline-danger">Sign Up</button>          </a>
+        </li>
+         <%}%>
+      </ul>
     </div>
-    
-  </div>
+  </nav>
+</div>

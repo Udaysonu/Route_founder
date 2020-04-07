@@ -1,9 +1,9 @@
-<div id='outer' class='inline' style='height:auto'>
+<div class='outer outer-r b-r' class='inline' style='height:auto'>
 
-<div id='container'>
+<div class='container container-r b-r dd'>
  
     <form action='/algo/path' method='post'>
-        <div class='input inline'> <select name='source'>
+        <div class='input inline inline-r '> <select class="input_tag pad" name='source'>
             <option> Banglore</option>
             <option> Hyderabad</option>
             <option> Chennai </option>
@@ -16,8 +16,7 @@
             <option>Pudichery</option>
         </select></div>
         
-       
-        <div class='input inline'> <select name='destination'>
+        <div class='input inline inline-r'> <select class="input_tag pad" name='destination'>
             <option> Banglore</option>
             <option> Hyderabad</option>
             <option> Chennai </option>
@@ -30,7 +29,7 @@
             <option>Pudichery</option>
         </select></div>
        <div class='input inline' >
-        <button ><i class='fa fa-search'></i></button>
+        <button  class="btn_ pad"><i class='fa fa-search'></i></button>
        </div>
     </form>
     
@@ -45,13 +44,26 @@
     <%if(locals.values){%>
     
         <%for(value of values){%>
-       <div   id='container' class='full_width' style=' margin: 10px;'>
+       <div    class='container  full_width' style=' margin: 10px;'>
         <div id=' ' style='text-align:center;'>
            
           
-           <div class=' '><b>Path:</b>  <%for(let i of value){%><%=i%>--><%}%><br></div><br>
-           <div class=' '><b>Price:</b> <%=locals.pric_dist[count][0]%> <br></div><br>
-            <div class=' '><b>Distance:</b> <%=locals.pric_dist[count][1]%> <br></div>
+           <div class=' '><b><button type="button" class="btn btn-light"><b>Path:</b></button></b>  <%for(let i of value){%>
+            <div class="btn-group" role="group" aria-label="Basic example">
+              <span style="border:1px double white;padding:3px">   <%=i%>     </span>
+                
+              </div><svg class="bi bi-arrow-right" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M10.146 4.646a.5.5 0 01.708 0l3 3a.5.5 0 010 .708l-3 3a.5.5 0 01-.708-.708L12.793 8l-2.647-2.646a.5.5 0 010-.708z" clip-rule="evenodd"/>
+            <path fill-rule="evenodd" d="M2 8a.5.5 0 01.5-.5H13a.5.5 0 010 1H2.5A.5.5 0 012 8z" clip-rule="evenodd"/>
+          </svg>
+          <%}%><br></div><br>
+           <div class=' '><b><button type="button" class="btn btn-light"><b>Price:</b></button></b>            <div class="btn-group" role="group" aria-label="Basic example">
+            <span style="border:1px double white;padding:3px">  <%=locals.pric_dist[count][0]%>  </span>
+          </div> <br></div><br>
+            <div class=' '><b> <button type="button" class="btn btn-light"><b>Distance:</b></button></b>  <div class="btn-group" role="group" aria-label="Basic example">
+                <span style="border:1px double white;padding:3px">   <%=locals.pric_dist[count][1]%>  </span>
+                
+              </div> <br></div>
         </div>
         
        </div>
@@ -59,7 +71,7 @@
        <%}%>
         
    <%}else{%>    
-    <div id='container' class='full_width'><h1>Sorry No Expert in your area</h1></div>
+    <div class='container full_width'><h1>Search for Flights</h1></div>
     <%}%>
 </div>
  

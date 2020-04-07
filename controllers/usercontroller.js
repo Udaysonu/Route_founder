@@ -58,3 +58,68 @@ module.exports.authenticate=function(req,res){
 module.exports.routesearch=function(req,res){
     res.render("search");
 }
+module.exports.update=function(req,res){
+    console.log(req.user.id)
+    User.findById(req.user.id,function(err,user){
+        if(err){
+            console.log(err);
+        }
+         if(user){
+             return res.render("update",{user:user});
+        }
+        res.redirect("/user/routesearch")
+
+    })
+    
+}
+module.exports.update_user= function(req,res){
+     
+    
+    try{
+        
+         User.uploadedAvatar(req,res,function(err){
+             if(err){
+                 console.log(err);
+             }
+            
+            if(req.body.password!=req.body.re_password){
+                console.log('passnotpathc')
+                req.flash("error","Password and Re_password does not match!!!")
+                res.redirect("/user/update")
+                return
+            }             
+          User.findById(req.user.id,function(err,user){
+            user.name=req.body.name;
+            user.password=req.body.password;
+            user.mobile=req.body.mobile;
+             
+           if(req.file){
+                                         user.avatar=User.avatarPath+'/'+req.file.filename;
+                                         console.log(user.avatar);
+                                     }
+           console.log(req.file)
+           user.save();
+           console.log(user);
+            req.flash('success','Profile Updated Succesfully');
+            return res.redirect('back');
+        
+             
+
+
+
+          }
+
+             
+          
+          )
+ 
+             })
+         
+     }
+    
+    catch(err)
+    {
+        console.log(err,'Error Encountered while using multer');
+    }
+     
+}

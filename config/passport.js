@@ -40,5 +40,11 @@ passport.setAuthenticatedUser=function(req,res,next){
       res.locals.user=req.user;
       next();
 }
-
+passport.checkAuthenticatedUser=function(req,res,next){
+  if(req.isAuthenticated()){
+      next();
+  }
+  else{     
+      return res.redirect('/user/signin');
+  }}
 module.exports=passport

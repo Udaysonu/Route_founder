@@ -1,0 +1,156 @@
+<link rel='stylesheet' type='text/css' href='/css/chatroom.css'>
+<div class="outer_screen">
+
+
+
+
+  <section class="msger">
+    <header class="msger-header">
+      <div class="msger-header-title">
+        <i class="fas fa-comment-alt"></i> SimpleChat
+      </div>
+      <div class="msger-header-options">
+        <span><i class="fas fa-cog"></i></span>
+      </div>
+    </header>
+  
+    <main id="chat_messages"  class="msger-chat">
+      <div class="msg left-msg">
+        <div
+         class="msg-img"
+         style="background-image: url(https://image.flaticon.com/icons/svg/327/327779.svg)"
+        ></div>
+  
+        <div   class="msg-bubble">
+
+          <div class="msg-info">
+            <div class="msg-info-name">CustomerCare</div>
+            <div class="msg-info-time">12:45</div>
+          </div>
+  
+          <div class="msg-text other-message">
+            Hi, welcome to SimpleChat! Go ahead and send me a message. 😄
+          </div>
+        </div>
+      </div>
+  
+      <div class="self-message msg right-msg">
+        <div         class="msg-img"
+         >
+         <img  width="100%" style="border-radius: 50%;" height="100%" src="<%=user.avatar%>">
+        </div>
+  
+        <div class="msg-bubble">
+          <div class="msg-info">
+            <div class="msg-info-name"><%=locals.user.name%></div>
+            <div class="msg-info-time">12:46</div>
+          </div>
+  
+          <div class="msg-text ">
+            You can change your name in JS section!
+          </div>
+        </div>
+      </div>
+    </main>
+  
+    <form class="msger-inputarea">
+      <input type="text" id="input_text" class="msger-input" placeholder="Enter your message...">
+      <button type="submit" id="message_send" class="msger-send-btn">Send</button>
+    </form>
+  </section>
+
+
+
+<!-- 
+
+
+
+    <div class="inner_screen height_10">
+        <div> <h3>Chat With CustomerCare Service</h1> </div>
+    </div>
+    <div id="chat_messages" class="inner_screen height_90 ">
+     <div class="self-message"> <p> Self-message  </p></div>
+     <div class="other-message"><p> Other-message   hi hello nameasets</p></div>
+     
+     
+   
+    </div>
+    <div>
+        <form>
+            
+            <div class="input-group mb-3">
+              <input type="text" id="input_text" class="form-control" placeholder="Type Message Here......." aria-label="Recipient's username" aria-describedby="button-addon2">
+              <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="button"  id="message_send">Send Message</button>
+              </div>
+            </div>
+        </form>
+    </div>
+</div> -->
+<script
+src="https://code.jquery.com/jquery-3.4.1.min.js"
+integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+<script>
+  var socket = io('http://localhost:80');
+  
+  socket.emit('join_room', {room:"<%=user.id%>"});
+  var user='<%=locals.user.name%>'
+  var avatar="<$=locals.user.avatar>"
+  socket.on("receive_message",function(data){
+    if(data.sender!="<%=user.id%>"){
+        $("#chat_messages").append(`<div class="msg left-msg">
+        <div
+         class="msg-img"
+         style="background-image: url(https://image.flaticon.com/icons/svg/327/327779.svg)"
+        ></div>
+  
+        <div   class="msg-bubble">
+
+          <div class="msg-info">
+            <div class="msg-info-name">CustomerCare</div>
+            <div class="msg-info-time">12:45</div>
+          </div>
+  
+          <div class="msg-text other-message">
+            ${data.msg}
+          </div>
+        </div>
+      </div>`)
+      }
+      else{
+        $("#chat_messages").append(` <div class="self-message msg right-msg">
+        <div
+         class="msg-img"
+         
+         style="background-image: url(https://image.flaticon.com/icons/svg/145/145867.svg)">
+         
+        </div>
+  
+        <div class="msg-bubble">
+          <div class="msg-info">
+            <div class="msg-info-name">${user}</div>
+            <div class="msg-info-time">12:46</div>
+          </div>
+  
+          <div class="msg-text ">
+            ${data.msg}
+          </div>
+        </div>
+      </div>`)
+      }
+      var d = $('#chat_messages');
+d.scrollTop(d.prop("scrollHeight"));
+
+      console.log("info-sen",data.sender,data)
+  });
+  var btn=document.getElementById("message_send");
+  btn.addEventListener('click',function(e){
+      e.preventDefault();
+      var input_text=$('#input_text').val()
+      console.log("clicked",input_text)
+      socket.emit("send_message",{msg:input_text,sender:'<%=user.id%>'})
+      $("#input_text").val("")
+  })
+</script>

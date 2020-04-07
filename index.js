@@ -8,19 +8,32 @@ const flash=require("connect-flash");
 const passport=require("passport");
 const passport_local=require("./config/passport");
 const session=require("express-session");
+const MongoStore = require('connect-mongo')
+var mongoose = require('mongoose');
+var cookieParser = require('cookie-parser');
+
 const expressLayouts=require("express-ejs-layouts");
 const flashmiddleware=require("./middleware/flassmiddleware")
+const server=require("http").Server(app);
+const io=require("./config/socketServer").chatserver(server);
+app.use('/uploads',express.static(__dirname+'/uploads'))
 //setting up required middlewared
-app.set("layout extractScripts", true)
-app.set("layout extractStyles", true)
+app.use(cookieParser());
+
 app.use(express.urlencoded());
 app.use(expressLayouts);
+app.use(express.static("./assets"));
 app.set("view engine",'ejs');
 app.set("views",path.join(__dirname,'/views'));
-app.use(express.static("./assets"));
+app.set("layout extractScript", true)
+app.set("layout extractStyle", true)
+
 app.use(session({
     name:"Findpath",
-    secret:"getsomerawdata"
+    secret:"getsomerawdata",
+   
+  // using store session on MongoDB using express-session + connect
+ 
 }));
 
 app.use(passport.initialize());

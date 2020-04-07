@@ -10,8 +10,14 @@ router.post("/authenticate",passport.authenticate('local',{
     failureRedirect:"back"
 }),usercontroller.authenticate);
 router.get("/routesearch",usercontroller.routesearch);
-router.get("/logout",usercontroller.logout)
+router.get("/chatroom",passport.checkAuthenticatedUser,function(req,res){
+    res.render("chatbox")
+})
+router.post("/update_user",passport.checkAuthenticatedUser,usercontroller.update_user)
+router.get("/update",passport.checkAuthenticatedUser,usercontroller.update);
+router.get("/logout",passport.checkAuthenticatedUser,usercontroller.logout)
 router.get('/',function(req,res){
     res.send("404 page not found");
 })
+ 
 module.exports=router;
