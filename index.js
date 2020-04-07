@@ -8,8 +8,7 @@ const flash=require("connect-flash");
 const passport=require("passport");
 const passport_local=require("./config/passport");
 const session=require("express-session");
-const MongoStore = require('connect-mongo')
-var mongoose = require('mongoose');
+ 
 var cookieParser = require('cookie-parser');
 
 const expressLayouts=require("express-ejs-layouts");

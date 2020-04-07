@@ -8,6 +8,7 @@ chat_cc.find().populate('chat_id').exec(function(err,customers){
 
 }
 module.exports.create=async function(req,res){
+    console.log("here")
     console.log(req.params,req.params.id)
 
     user=await chat_cc.findOne({chat_id:req.params.id})
@@ -25,7 +26,7 @@ module.exports.create=async function(req,res){
     })
     console.log("customer created succesfully")
     res.json(200)
-    
+    return ;
 }
 module.exports.delete=function(req,res){
     console.log("delete ufnctioanot clalrlewd sfdahlaksjfdilah dfalkds",req.params.id)
