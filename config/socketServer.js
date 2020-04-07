@@ -3,7 +3,7 @@ var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 
 module.exports.chatserver=function(server){
 var io=require("socket.io")(server)
-server.listen(800,function(err){
+server.listen(5000,function(err){
 
 
     if(err){
