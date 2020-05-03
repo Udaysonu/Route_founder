@@ -1,5 +1,4 @@
-module.exports.path_eval=function(req,res){
-   
+
     var distprice=[]
      var paths=[]
      var waiting_time=[]
@@ -179,35 +178,30 @@ module.exports.path_eval=function(req,res){
      b1.addedge("Banglore","Chennai",2000,350,"9:43","11:30")
      b1.addedge('Chennai',"Banglore",3800,1078,"23:00","4:20")
      b1.addedge("Pudichery","Hyderabad",2400,130,"0:00","6:49") 
-      
+     b1.getallpath("Chennai","Banglore") 
 
-    console.log(req.body.source,req.body.destination)
-    b1.getallpath(req.body.source,req.body.destination) 
-   
-    console.log(paths,waiting_time,travelling_time)
-    var journey_time=[]
-    for(let i=0;i<waiting_time.length;i++){
-       journey_time.push(waiting_time[i]+travelling_time[i])
-   }
-   var converted_waiting_time=[],converted_travelling_time=[],converted_journey_time=[];
-    converter=function converter(raw_array,converted_array){
-       for(i of raw_array){
-           var string=""
-           var hours=parseInt(i/60);
-           var min=i-hours*60;
-           string=hours.toString()+" hr "+min.toString()+" min"
-          converted_array.push(string)
-          }
+     console.log(paths,waiting_time,travelling_time)
+     var journey_time=[]
+     for(let i=0;i<waiting_time.length;i++){
+        journey_time.push(waiting_time[i]+travelling_time[i])
     }
+    var converted_waiting_time=[],converted_travelling_time=[],converted_journey_time=[];
+     converter=function converter(raw_array,converted_array){
+        for(i of raw_array){
+            var string=""
+            var hours=parseInt(i/60);
+            var min=i-hours*60;
+            string=hours.toString()+" hr "+min.toString()+" min"
+           converted_array.push(string)
+           }
+     }
 
-   converter(waiting_time,converted_waiting_time)
-   converter(travelling_time,converted_travelling_time)
-   converter(journey_time,converted_journey_time)
-    console.log(waiting_time,converted_waiting_time)
-    console.log(journey_time,converted_journey_time)
-    console.log(travelling_time,converted_travelling_time)
-   
+    converter(waiting_time,converted_waiting_time)
+    converter(travelling_time,converted_travelling_time)
+    converter(journey_time,converted_journey_time)
+     console.log(waiting_time,converted_waiting_time)
+     console.log(journey_time,converted_journey_time)
+     console.log(travelling_time,converted_travelling_time)
+    
 
-   
-    res.render("search",{values:paths,pric_dist:distprice,wait_time:converted_waiting_time,travel_time:converted_travelling_time,journey_time:converted_journey_time});
-}
+ 

@@ -122,7 +122,9 @@ small{
   ::-webkit-scrollbar-thumb:hover {
     background: #555; 
   }
-  
+.margin-high{
+    margin-top: 5rem;
+}
 
 @media screen and (max-width:450px){
     .outer-r{
@@ -169,5 +171,7 @@ small{
     .dd{
         border: 2px double tomato;
     }
-
+    .margin-high{
+        margin-top: 0rem;
+    }
 }
