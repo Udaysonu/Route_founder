@@ -8,7 +8,8 @@ const flash=require("connect-flash");
 const passport=require("passport");
 const passport_local=require("./config/passport");
 const session=require("express-session");
- 
+const MongoStore = require('connect-mongo')(session);
+
 var cookieParser = require('cookie-parser');
 
 const expressLayouts=require("express-ejs-layouts");
@@ -18,6 +19,7 @@ const io=require("./config/socketServer").chatserver(server);
 app.use('/uploads',express.static(__dirname+'/uploads'))
 //setting up required middlewared
 app.use(cookieParser());
+const mongoose = require('mongoose');
 
 app.use(express.urlencoded({extended:true}));
 app.use(expressLayouts);
@@ -30,7 +32,7 @@ app.set("layout extractStyle", true)
 app.use(session({
     name:"Findpath",
     secret:"getsomerawdata",
-   
+   store:new MongoStore({ mongooseConnection: mongoose.connection })
   // using store session on MongoDB using express-session + connect
  
 }));
