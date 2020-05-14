@@ -13,9 +13,7 @@ router.get('/auth/google',
 router.get( '/auth/google/callback', 
     passportgoogle.authenticate( 'google', { 
         successRedirect: '/user/routesearch',
-        failureRedirect: 'back'
+        
 }));
-router.get('/',function(req,res){
-    res.send("404 page not found");
-})
+
 module.exports=router;

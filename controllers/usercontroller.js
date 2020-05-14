@@ -1,6 +1,9 @@
 const User=require("../models/usermodel");
+const mailer=require("../mailer/nodemailer")
 //signin controller 
 module.exports.signin=function(req,res){
+    // info={reciver:"udaysonubakka123@gmail.com","subject":"welcome",text:"text"}
+   
     res.render("signin");
 }
 //signup controller
@@ -23,6 +26,8 @@ module.exports.createuser=async function(req,res){
     }
     //checking password and re_password are equal or not
     if(req.body.password!=req.body.re_password){
+
+
         console.log("Password and Re-password does not match");
         req.flash("error","Password and Re_password does not match!!")
         res.redirect("back")
@@ -35,6 +40,8 @@ module.exports.createuser=async function(req,res){
             req.flash("error","Error in creating the user")
             return;
         }
+    
+    mailer.signup_done({user:req.body})
         console.log("User added succesfully");
          
     })
@@ -56,6 +63,7 @@ module.exports.authenticate=function(req,res){
 }
 //
 module.exports.routesearch=function(req,res){
+    
     res.render("search");
 }
 module.exports.update=function(req,res){
