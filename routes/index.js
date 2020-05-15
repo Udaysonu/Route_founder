@@ -5,7 +5,8 @@ const passport=require("../config/passport")
 const User=require("../models/usermodel")
 router.use('/algo',require("./algorithms"));
 router.use('/user',require("./users"))
-router.use("/cc",require("./customercare"))
+router.use("/cc",require("./customercare"));
+router.use("/booking",require("./booking"));
 router.get('/auth/google',
   passportgoogle.authenticate('google', { scope: 
       [ 'profile' ,'email'] }

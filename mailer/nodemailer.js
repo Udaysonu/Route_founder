@@ -25,14 +25,14 @@ var sender=function(data,relativepath){
 
    var renderTemplete=function(data,relativepath){
     ejs.renderFile( path.join(__dirname,relativepath),data,function(err,template){
+      console.log(template)
       if(err){
-        console.log(err);
+        console.log("Error in sending email:-",err);
       }else{
-        
         transporter.sendMail({
           from: 'udaysonubakka143@gmail.com', // sender address
           to: data.user.email , // list of receivers
-          subject: "Hello ✔", // Subject line
+          subject: "AeroBook", // Subject line
          // plain text body
           html: template// html body
         });
@@ -64,6 +64,7 @@ sender(data,"../views/mail_templates/signup_successful.ejs")
 module.exports.google_done=function(data){
 
   sender(data,"../views/mail_templates/google_auth.ejs")
-  
-  
-  }
+}
+module.exports.booking_done=function(data){
+  sender(data,"../views/mail_templates/booking_confirmed.ejs");
+}

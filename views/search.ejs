@@ -89,6 +89,36 @@
                 <span style="border:1px double white;padding:3px">   <%=locals.pric_dist[count][1]%>  </span>
                 
               </div> <br></div>
+              <br>
+              Amount: Passengers x Cost
+              <form action='/booking/orderbooking' method='post'>
+                Amount:
+                 <select class="input_tag pad" id="passengers" name='passengers'>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                    <option>10</option>
+                </select> X <%=locals.pric_dist[count][0]%> <br>
+                <input hidden  name="user_id" value="<%=locals.user._id%>">
+                <input hidden  name="path" value="<%for(let i of value){%><%=i%>-><%}%>">
+                <input hidden name='cost' id='cost' value="<%=locals.pric_dist[count][0]%>">
+                <div class=' '><b> <button id="submit" type='submit' class="btn btn-danger"><b>Book Now!</b></button></b>  
+                
+                </div> <br></div>
+                
+                
+            </form>
+
+
+              
+              
+            
         </div>
         
        </div>
@@ -99,4 +129,18 @@
     <div class='container full_width'><h1>Search for Flights</h1></div>
     <%}%>
 </div>
+<script>
+  var btn=document.getElementById("submit");
+  btn.addEventListener("click",function(e){
+    var cost=document.getElementById("cost");
+    var passengers=document.getElementById("passengers")
+    cost.value=parseInt(cost.value)*parseInt(passengers.value)
+    console.log(cost.value,passengers.value)
+    ans=window.confirm("The total amout payable is "+cost.value+ ". Are you sure you want to continue?")
+    if(!ans){
+      e.preventDefault();
+    }
+    
+  })
+</script>
  

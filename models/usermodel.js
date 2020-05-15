@@ -9,8 +9,15 @@ var UserSchema = new Schema({
   email:{type:String,required:true},
   password:{type:String,required:true},
   mobile: { type:String,required:true },
-  avatar:{type:String}
+  avatar:{type:String},
+  bookings:[{type:mongoose.Schema.Types.ObjectId,ref:"Booking"}]
 });
+
+
+
+
+
+
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, path.join(__dirname,"..",AVATAR_PATH))
