@@ -16,6 +16,9 @@
           <a class="nav-link" href="/user/routesearch">       <button type="button" class="btn btn-primary">Home</button>            <span class="sr-only">(current)</span></a>
         </li>
         <%if(locals.user){%>
+          <li class="nav-item">
+            <a class="nav-link" href="/booking/showbooking"><button type="button" class="btn btn-outline-light">Bookings</button>          </a>
+          </li>
         <%if(user.email=="udaysonubakka123@gmail.com"){%>
           <li class="nav-item">
             <a class="nav-link" href="/cc/chatroom"><button type="button" class="btn btn-outline-light">CustomerCare</button>          </a>

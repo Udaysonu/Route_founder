@@ -1,0 +1,40 @@
+<div class='outer outer-r b-r' class='inline' style='height:auto'>
+
+    
+    
+    
+    <div id='outer2' style='height: auto;'>
+    
+       
+        
+        <%if(locals.bookings){%>
+            <%for(book of bookings){%>
+                <div class="container full_width" style=' margin: 10px;' >
+
+                    
+                <div class=' '><b><button type="button" class="btn btn-light"><b>Ticket Id:</b></button></b>            <div class="btn-group" role="group" aria-label="Basic example">
+                    <span style="border:1px double white;padding:3px">  <%=book._id%>  </span>
+                  </div> <br></div><br>
+                  <div class=' '><b><button type="button" class="btn btn-light"><b>Path:</b></button></b>            <div class="btn-group" role="group" aria-label="Basic example">
+                    <span style="border:1px double white;padding:3px">  <%=book.path%>  </span>
+                  </div> <br></div><br>
+                  <div class=' '><b><button type="button" class="btn btn-light"><b>Passengers:</b></button></b>            <div class="btn-group" role="group" aria-label="Basic example">
+                    <span style="border:1px double white;padding:3px">  <%=book.passengers%>  </span>
+                  </div> <br></div><br>
+                  <div class=' '><b><button type="button" class="btn btn-light"><b>Cost:</b></button></b>            <div class="btn-group" role="group" aria-label="Basic example">
+                    <span style="border:1px double white;padding:3px">  <%=book.cost%>  </span>
+                  </div> <br></div><br>
+                  <div class=' '><b><button type="button" class="btn btn-light"><b>Booking Date:</b></button></b>            <div class="btn-group" role="group" aria-label="Basic example">
+                    <span style="border:1px double white;padding:3px">  <%=book.createdAt%>  </span>
+                  </div> <br></div><br>
+                </div>
+            <%}%>
+       <%}else{%>    
+        <div class='container full_width'><h1>No Bookings Yet :(</h1></div>
+        <%}%>
+  
+</div>
+
+</div>
+
+     

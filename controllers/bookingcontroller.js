@@ -1,6 +1,22 @@
 var User=require("../models/usermodel");
 var Booking=require("../models/bookingmodel");
 var nodemailer=require("../mailer/nodemailer");
+
+
+
+
+
+module.exports.showBookings=function(req,res){
+Booking.find({user_id:req.user.id}).sort({createdAt:-1}).exec(function(err,bookings){
+    console.log(bookings);
+    res.render('check_bookings',{bookings:bookings});
+})
+
+}
+
+
+
+
 module.exports.orderbook=function(req,res){
 Booking.create(req.body,function(err,book){
     if(err){
