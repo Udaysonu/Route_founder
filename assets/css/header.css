@@ -1,5 +1,4 @@
 #nav_header{
-display: inline-block;
-width: 100%;
-  
+display: inline-block!important;
+width: 100% !important;
 }

@@ -7,6 +7,7 @@ router.use('/algo',require("./algorithms"));
 router.use('/user',require("./users"))
 router.use("/cc",require("./customercare"));
 router.use("/booking",require("./booking"));
+router.use("/dashboard",require("./dashboard"));
 router.get('/auth/google',
   passportgoogle.authenticate('google', { scope: 
       [ 'profile' ,'email'] }

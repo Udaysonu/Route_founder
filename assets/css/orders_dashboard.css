@@ -1,0 +1,22 @@
+#order_board {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; }
+  
+  #order_div {
+    background-color: white;
+    display: flex;
+    width: 100%;
+    height: auto;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: baseline;
+    flex-wrap: wrap; }
+  
+  #order_div div {
+    min-width: 200px;
+    width: auto;
+    height: auto; }
+  

@@ -1,0 +1,32 @@
+<link rel='stylesheet' type='text/css' href='/css/orders_dashboard.css'>
+
+<div id='order_board'>
+    <%if(locals.bookings){%>
+    <div id='order_div'>   
+        <%for(let booking of locals.bookings){%>
+
+           
+            <div class="card text-white bg-info mb-4" style="max-width: 18rem;">
+                <div class="card-header"><button class='btn btn-danger'> <%=booking.createdAt%></button> </div>
+               
+                <div class="card-body">
+                  
+                  <h5 class="card-title"  style="color:yellow;"><h5>Ticket ID :</h5>   <%=booking._id%> <br><h5>Passengers :</h5>  <%=booking.passengers%></h5>
+                  
+                  <h5>Path :</h5>
+                  <p class="card-text"> <span style="text-align: left;"> <%=booking.path%></span>     <span style="text-align: right;color:rgb(217, 255, 0)">  <%=booking.cost%></span>      </p>
+                   
+                  
+                 <button class='btn btn-warning'><strong> Amount : </strong>  <%=booking.cost%> </button>
+            </div>
+            </div>
+
+
+             
+                     
+              
+           
+        <%}%>
+    </div>
+    <%}%>
+</div>

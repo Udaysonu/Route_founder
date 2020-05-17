@@ -1,0 +1,30 @@
+#board{
+    border:2px solid red;
+    min-height: 80vh;
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.min{
+    border:2px solid orange;
+    width:100px;
+    height:100px;
+    padding:10px;
+    margin:20px;
+}
+.med{
+    border:2px solid orange;
+    width:200px;
+    height:100px;
+    padding:10px;
+    margin:20px;
+    min-width: 100px;
+}
+.large{
+    border:2px solid orange;
+    min-width: 100px;
+    width:100px;
+    height:200px;
+    padding:10px;
+    margin:20px;
+}
