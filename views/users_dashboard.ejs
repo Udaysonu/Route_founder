@@ -1,0 +1,61 @@
+<div>
+    <div>
+        
+    </div>
+
+    <div>
+        <%for(user of users){%>
+            <img width=100 height=100 src=<%=user.avatar%>>
+            
+            <form method='post' enctype="multipart/form-data"    action="/dashboard/updateUser/">
+            <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name:</th>
+                    <th scope="col" ><input type='text' name='name' value='<%=user.name%>'></th>
+                    <input type="text" name="user_id" hidden value="<%=user.id%>">
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>Email:</td>
+                    <td><input type='text' name='email' value='<%=user.email%>'></td>
+                   
+                  </tr>
+                  <tr>
+                    <th scope="row">2</th>
+                    <td>Password:</td>
+                    <td><input type='text' name='password' value='<%=user.password%>'></td>
+                    
+                  </tr>
+                  <tr>
+                    <th scope="row">3</th>
+                    <td>Mobile:</td>
+                    <td><input type='text' name='mobile' value='<%=user.mobile%>'></td>
+                    
+                  </tr>
+                
+                 
+                  <tr>
+                    <th scope="row">3</th>
+                    <td>Avatar:</td>
+                    <td><input class='input_tag' name='avatar' type="file"  placeholder="file"  ></td>
+                    
+                  </tr>
+                </tbody>
+              </table>
+              <br>
+              <button class='btn btn-info'>Update User</button>
+            </form>
+            <br>
+            <hr>
+            <br>
+
+
+
+        <%}%>
+    </div>
+
+</div>
