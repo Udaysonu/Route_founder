@@ -1,7 +1,8 @@
 const express=require('express');
 const router=express.Router();
 const dashboardController=require("../controllers/dashboardController")
-
+router.post("/specificUser",dashboardController.specificUser)
+router.get("/deleteUser/:id",dashboardController.deleteUser)
 router.get("/bookings",dashboardController.showBookings);
 router.get("/allusers",dashboardController.showUsers);
 router.post("/updateUser",dashboardController.updateUser);

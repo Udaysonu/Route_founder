@@ -1,3 +1,25 @@
+<div class='outer outer-r b-r' class='inline' style='height:auto'>
+
+  <div class='container container-r b-r dd'>
+
+      <form action='/dashboard/specificUser' method='post'>
+          <div class='input inline inline-r '> 
+            <input type="text" name="name" placeholder="Name Search">
+          </div>
+            
+          <div class='input inline inline-r'>
+            <input type="text" name="email" placeholder="Email Search">
+          </div>
+         <div class='input inline' >
+          <button  class="btn_ pad"><i class='fa fa-search'></i></button>
+         </div>
+      </form>
+      
+      </div>
+      
+  
+  </div>
+
 <div>
     <div>
         
@@ -47,8 +69,14 @@
                 </tbody>
               </table>
               <br>
+
               <button class='btn btn-info'>Update User</button>
+
             </form>
+           <a href="/dashboard/deleteUser/<%=user._id%>">
+            <button id="delete_btn"  class='btn btn-Danger'>  Delete User </button>
+          </a> 
+
             <br>
             <hr>
             <br>
@@ -59,3 +87,4 @@
     </div>
 
 </div>
+ 

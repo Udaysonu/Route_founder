@@ -1,6 +1,42 @@
 const Booking=require("../models/bookingmodel");
 const User=require("../models/usermodel");
 
+module.exports.deleteUser=function(req,res){
+    console.log(req.params.id,"000000000000000000000000000000000")
+    User.deleteOne({id:req.params.id},function(err){
+        if(err){
+            console.log("Error in deleting the user");
+        }
+        req.flash("success","User Deleted!")
+        console.log("deleted succesflly bro all the best");
+        return res.redirect("/dashboard/allusers");
+     })
+}
+
+
+
+module.exports.specificUser=function(req,res){
+    var details={}
+    if(req.body.name!=""){
+        details.name=req.body.name;
+    }
+    if(req.body.email!=""){
+        details.email=req.body.email
+    }
+    console.log(req.body,"*****************")
+
+    User.find(details,function(err,users){
+        console.log(users,"*************")
+        res.render("users_dashboard",{users:users});
+        })
+    
+}
+
+
+
+
+
+
 module.exports.updateUser=function(req,res){
 try{
         User.uploadedAvatar(req,res,function(err){
