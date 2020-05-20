@@ -1,0 +1,42 @@
+<link rel='stylesheet' type='text/css' href='/css/all_flight_paths.css'>
+<div id='body_screen'>
+    <div id='mainbar'>
+        <%for(path of paths){%>
+        <div id='rest'>
+            <div id='rest_image'><img src='/images/bowl.jpg'></div id='rest_image'>
+            <div id='rest_details'>
+                <p>Source:                <%=path[0]%>                </p>
+                
+                <p>Destination:<%=path[1]%></p>
+               
+                <p>Travelling Cost: <%=path[2]%></p>
+                 
+                <p> Trevelling Distance:<%=path[3]%> </p>
+                 
+                <p>Starting Time:<%=path[4]%></p>
+                 
+                <p> Ending Time:<%=path[5]%> </p>
+               
+ 
+            </div>
+        </div>
+
+        <%}%>
+
+    </div>
+    <div id='sidebar'>
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+</div>
