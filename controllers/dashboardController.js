@@ -13,6 +13,10 @@ module.exports.deleteUser=function(req,res){
      })
 }
 
+module.exports.addpath=function(req,res){
+    res.render("addpath")
+}
+
 
 
 module.exports.specificUser=function(req,res){

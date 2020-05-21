@@ -1,3 +1,6 @@
+var PathInfo=require("../models/pathmodel");
+
+
 var distprice=[]
 var paths=[]
 var waiting_time=[]
@@ -16,8 +19,10 @@ class Node{
 class Graph{
 
     constructor(nvertices){
-        this.nvertices=10
-    this.flight_paths=[]
+        this.nvertices=10;
+    this.flight_paths=[];
+    this.sources=new Set();
+    this.destinations=new Set();
     var gfg = new Array(10);  
     for (var i = 0; i < gfg.length; i++) { 
         gfg[i] = new Array(10); 
@@ -169,25 +174,29 @@ class Graph{
         }
     }
 }
-b1=new Graph(10)
-b1.addedge("Delhi","Amritsar",2000,200,"1:30","2:30")
-b1.addedge("Amritsar","Delhi",2000,200,"12:30","14:30")
-b1.addedge("Delhi","Mumbai",4000,600,"23:43","1:40")
-b1.addedge("Mumbai","Delhi",4000,600,"4:32","5:40")
-b1.addedge("Delhi","Noida",2000,100,"5:50","7:43")
-b1.addedge("Noida","Gurgaon",2000,80,"6:20","7:20")
-b1.addedge("Gurgaon","Delhi",1500,79,"8:50","7:30")
-b1.addedge("Delhi",'Hyderabad',5500,700,"9:45","4:43")
-b1.addedge("Hyderabad","Delhi",5500,700,"8:40","10:40")
-b1.addedge("Mumbai","Chennai",3200,350,"3:30","5:00")
-b1.addedge("Mumbai","Bhopal",3000,320,"3:21","3:42")
-b1.addedge("Bhopal","Chennai",2300,200,"7:24","6:23")
-b1.addedge("Chennai","Pudichery",1000,60,"8:09","10:30")
-b1.addedge("Hyderabad","Banglore",1500,200,"4:23","5:23")
-b1.addedge("Banglore","Chennai",2000,350,"9:43","11:30")
-b1.addedge('Chennai',"Banglore",3800,1078,"23:00","4:20")
-b1.addedge("Pudichery","Hyderabad",2400,130,"0:00","6:49") 
- 
+b1=new Graph(10);
+
+function loadpath(){
+    PathInfo.find({},function(err,paths){
+        for(path of paths){
+            b1.addedge(path.source,path.destination,path.cost,path.distance,path.start_time,path.end_time)
+        }
+    })
+    console.log("Databases paths loaded")
+}
+loadpath()
+
+module.exports.addPath=function(req,res){
+
+    PathInfo.create(req.body,function(err,path){
+        if(err){
+            console.log("Error in creating the path");
+            return res.redirect("back");
+        }
+        console.log("Path Created Succesfully");
+        return res.redirect("back");
+    })   
+}
 
 module.exports.path_eval=function(req,res){
      distprice=[]
@@ -233,9 +242,7 @@ module.exports.showPaths=function(req,res){
     res.render("all_flight_paths",{paths:paths});
 }
 
-module.exports.addPath=function(req,res){
 
-}
 module.exports.removePath=function(req,res){
 
 }
