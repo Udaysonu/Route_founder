@@ -1,5 +1,52 @@
 const Booking=require("../models/bookingmodel");
 const User=require("../models/usermodel");
+const Paths=require("../models/pathmodel");
+const algoController=require("../controllers/algocontroller")
+module.exports.deletePath=function(req,res){
+    console.log(req.params.id)
+Paths.findById(req.params.id,function(err,path){
+    var path=path;
+    Paths.findByIdAndDelete(path.id,function(err){
+        if(err){
+            console.log("error in deleting paht");
+        }
+        console.log("deleted path successfully")
+        algoController.deletePath(path.source,path.destination)
+    
+        return res.redirect("back");
+
+    })
+})
+
+
+}
+
+
+module.exports.updatePath=function(req,res){
+    algoController.updatePath(req.body)
+    Paths.findById(req.body.id,function(err,path){
+        console.log(path)
+        if(path.source!=req.body.source && path.destination!=req.body.destination){
+            req.flash("erro","Your tried to change the database! warning counts");
+            return res.redirect("back")
+        }
+        path.cost=req.body.cost
+        path.distance=req.body.distance
+        path.start_time=req.body.start_time
+        path.end_time=req.body.end_time
+        path.save()
+        return res.redirect("back");
+    })
+    
+}
+
+
+module.exports.showPaths=function(req,res){
+    Paths.find({},function(err,paths){
+        res.render("all_flight_paths",{paths:paths})
+    })
+}
+
 
 module.exports.deleteUser=function(req,res){
     console.log(req.params.id,"000000000000000000000000000000000")
@@ -14,10 +61,26 @@ module.exports.deleteUser=function(req,res){
 }
 
 module.exports.addpath=function(req,res){
-    res.render("addpath")
+    res.render("addpath");
+
 }
 
+module.exports.specificPath=function(req,res){
+    var details={}
+    if(req.body.source!=""){
+        details.source=req.body.source;
+    }
+    if(req.body.destination!=""){
+        details.destination=req.body.destination
+    }
+    console.log(req.body,"*****************")
 
+    Paths.find(details,function(err,paths){
+        console.log(paths,"*************")
+        res.render("all_flight_paths",{paths:paths});
+        })
+    
+}
 
 module.exports.specificUser=function(req,res){
     var details={}

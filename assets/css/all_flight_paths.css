@@ -23,12 +23,12 @@
     margin-top: 15px;
     display: flex;
     width: 90%;
-    height: 250px;
+    height: auto;
     background-color: #ffaa00; }
   
   #rest_image {
     width: 40%;
-    height: 250px;
+    height: auto;
     border: 2px solid pink; }
   
   img {
@@ -39,6 +39,6 @@
     box-sizing: border-box;
     padding: 20px;
     width: 60%;
-    height: 250px;
+    height: auto;
     border: 2px solid green; }
   

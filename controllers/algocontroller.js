@@ -45,6 +45,18 @@ class Graph{
         var temp=new Node(price,distance,start_tim,end_tim);
         this.adjmatrix[a][b]=temp;
     }
+    removeedge(source,destination){
+        source=this.mapi[source]
+        destination=this.mapi[destination]
+        this.adjmatrix[source][destination]=null;
+    }
+    updateedge(body){
+        var source=this.mapi[body.source]
+        var destination=this.mapi[body.destination]
+        console.log(source,destination);
+        var temp=new Node(body.cost,body.distance,body.start_time,body.end_time);
+        this.adjmatrix[source][destination]=temp;
+    }
     getallpathhelper(a,b,k,visited){
         if(b==k){
             return [true,[[k]]]
@@ -185,6 +197,31 @@ function loadpath(){
     console.log("Databases paths loaded")
 }
 loadpath()
+
+
+
+
+
+
+module.exports.deletePath=function(source,destination){
+    console.log(source,destination);
+    b1.removeedge(source,destination);
+    return 
+}
+
+
+
+
+module.exports.updatePath=function(body){
+    console.log(body)
+    b1.updateedge(body);
+    return 
+}
+
+
+
+
+
 
 module.exports.addPath=function(req,res){
 

@@ -1,42 +1,101 @@
-<link rel='stylesheet' type='text/css' href='/css/all_flight_paths.css'>
-<div id='body_screen'>
-    <div id='mainbar'>
-        <%for(path of paths){%>
-        <div id='rest'>
-            <div id='rest_image'><img src='/images/bowl.jpg'></div id='rest_image'>
-            <div id='rest_details'>
-                <p>Source:                <%=path[0]%>                </p>
-                
-                <p>Destination:<%=path[1]%></p>
-               
-                <p>Travelling Cost: <%=path[2]%></p>
-                 
-                <p> Trevelling Distance:<%=path[3]%> </p>
-                 
-                <p>Starting Time:<%=path[4]%></p>
-                 
-                <p> Ending Time:<%=path[5]%> </p>
-               
  
+
+
+<div class='outer outer-r b-r' class='inline' style='height:auto'>
+
+    <div class='container container-r b-r dd'>
+  
+        <form action='/dashboard/specificPath' method='post'>
+            <div class='input inline inline-r '> 
+              <input type="text" name="source" placeholder="Source Search">
             </div>
+              
+            <div class='input inline inline-r'>
+              <input type="text" name="destination" placeholder="Destination Search">
+            </div>
+           <div class='input inline' >
+            <button  class="btn_ pad"><i class='fa fa-search'></i></button>
+           </div>
+        </form>
+        
         </div>
-
-        <%}%>
-
+        
+    
     </div>
-    <div id='sidebar'>
+  
+  <div>
+      <div>
+          
+      </div>
+  
+      <div>
+          <%for(path of paths){%>
+               
+              
+              <form method='post'     action="/dashboard/updatePath">
+              <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Source:</th>
+                      <th scope="col" ><input type='text' name='source' readonly value='<%=path.source%>'></th>
+                      <input type="text" name="id" value="<%=path.id%>" readonly>
+                      
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">1</th>
+                      <td>Destination:</td>
+                      <td><input type='text' name='destination' readonly value='<%=path.destination%>'></td>
+                     
+                    </tr>
+                    <tr>
+                      <th scope="row">2</th>
+                      <td>Cost:</td>
+                      <td><input type='number' name='cost' required value='<%=path.cost%>'></td>
+                      
+                    </tr>
+                    <tr>
+                      <th scope="row">3</th>
+                      <td>Distance:</td>
+                      <td><input type='number' name='distance' required value='<%=path.distance%>'></td>
+                      
+                    </tr>
+                  
+                   
+                    <tr>
+                      <th scope="row">3</th>
+                      <td>Start Time:</td>
+                      <td><input   name='start_time' required type="text"  value="<%=path.start_time%>" ></td>
+                      
+                    </tr>
 
-
-
-    </div>
-
-
-
-
-
-
-
-
-
-
-</div>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td>End Time:</td>
+                        <td><input   name='end_time' required type="text"  value="<%=path.end_time%>" ></td>
+                        
+                      </tr>
+                  </tbody>
+                </table>
+                <br>
+  
+                <button class='btn btn-info'>Update Path</button>
+  
+              </form>
+             <a href="/dashboard/deletePath/<%=path.id%>">
+              <button id="delete_btn"  class='btn btn-Danger'>  Delete Path </button>
+            </a> 
+  
+              <br>
+              <hr>
+              <br>
+  
+  
+  
+          <%}%>
+      </div>
+  
+  </div>
+   
