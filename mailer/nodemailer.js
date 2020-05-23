@@ -13,8 +13,8 @@ const path=require("path")
     port: 587,
     secure: false, // true for 465, false for other ports
     auth: {
-      user: "udaysonubakka143@gmail.com", // generated ethereal user
-      pass: "udayyadusonu@1" // generated ethereal password
+      user: "EmailHere", // generated ethereal user
+      pass: "Passwordhere" // generated ethereal password
     }
   });
 
