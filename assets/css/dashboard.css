@@ -1,3 +1,4 @@
+/* 
 #board{
     border:2px solid red;
     min-height: 80vh;
@@ -27,4 +28,69 @@
     height:200px;
     padding:10px;
     margin:20px;
+} */
+
+
+
+#outer_screen{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    
+    width: 100vw;
+}
+
+.dashboard_control:hover .dash_image{
+    opacity: 0.5;
+}
+.dashboard_control:hover .middle{
+    opacity: 1;
+}
+
+.dashboard_control{
+    overflow: hidden;
+    height:200px;
+    position: relative;
+    box-shadow:4px 4px 8px 1px rgb(247, 245, 245);
+    width:200px;
+    border-radius:20%;
+    margin:20px;
+    transition: 0.5s ease-in-out;
+    background-color: rgba(247, 245, 245,0);
+}
+ 
+ 
+.dash_image{
+    height:100%;
+    width:100%;
+    opacity: 1;
+    backface-visibility: hidden;
+    transition: 0.5s ease-in-out;
+}
+
+
+.middle{
+    transition: 0.5s ease-in-out;
+    opacity: 0;
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.text{
+    background-color: palegreen;
+    color:white;
+    font-size:16px;
+    padding:16px 32px;
+}
+
+.dashboard_control:hover{
+    box-shadow: none;
+    background-color:rgba(247, 245, 245,0.5);
 }
