@@ -3,7 +3,7 @@
 <span> Logo </span>
 
 
-<span class="left_nav" id="left_nav">
+<span class="left_nav" id="left_nv">
     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
         <i class="fa fa-bars"></i></a>
         
@@ -22,7 +22,7 @@
 
             <%}%> 
 
-            <a class="nav_link" href="/user/update"><span class="hover_span">Update Profile</span></a>
+            <a class="nav_link" href="/user/update"><img style="width:20px; height: 20px;" src="<%=user.avatar%>">  <span class="hover_span">Update Profile</span></a>
             <a class="nav_link " href="/user/logout"><span class="hover_span btn_link_red">Log Out</span></a>
 
     <%}else{%>
@@ -38,17 +38,14 @@
 <script>
 
 function myFunction() {
-    console.log("visible")
-    if( $(".nav_link").css("display")=="block"){
-        
-        $(".nav_link").css("display","none")
-
-    }else{
-        $(".nav_link").css("display","block");
-
-        $(".header_nav").css('display',"block")
-    
-    }
+var x=document.getElementById("left_nv");
+if(x.className=="left_nav"){
+    console.log("nochange")
+    x.className+=" responsive";
+}else{
+    console.log("changed")
+    x.className="left_nav";
+}
 }
 </script>
 

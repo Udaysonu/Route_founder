@@ -1,10 +1,11 @@
 a:link{
     text-decoration: none !important;
     transition-duration: 1s !important;
-    transition-delay: 1s !important;
+     
 }
 .nav_link{
-    display: inline;
+    display: inline-block;
+    transition-duration: 1s;
 }
 .header_nav{
     padding:10px;
@@ -15,7 +16,7 @@ a:link{
     position:sticky;
     top:0px;
     z-index: 1;
-    transition-duration: 1s;
+    transition-duration: 0.5s;
 }
 .header_nav span{
     margin-right: 10px;
@@ -29,6 +30,9 @@ a:link{
 .header_nav .icon{
     display: none;
 }
+.left_nav{
+    transition-duration: 1s;
+}
 
 
 @media screen and (max-width:600px){
@@ -37,7 +41,23 @@ a:link{
     .left_nav .icon{
     float:right;
     display:block;
-    }}
-
+    }
+}
+ 
+@media screen and (max-width:600px){
+    .responsive .nav_link{
+        display:block;
+    }
+    .header_nav{
+        display:block;       
+    }
+    .nav_link{
+        padding:10px;
+    }
+    .nav_link:hover{
+        background-color:green;
+        color:black
+    }
+}
   
  
