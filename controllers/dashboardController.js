@@ -148,7 +148,7 @@ res.render("users_dashboard",{users:users});
 }
 
 module.exports.showBookings=function(req,res){
-Booking.find({},function(err,bookings){
+Booking.find({}).sort({createdAt:-1}).exec(function(err,bookings){
 res.render("booking_dashboard",{bookings:bookings});
 })
 

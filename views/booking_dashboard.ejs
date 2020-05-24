@@ -1,7 +1,23 @@
 <link rel='stylesheet' type='text/css' href='/css/orders_dashboard.css'>
 
+<div class="booking_background">
+    <%if(locals.bookings){%>
+        <%for(let booking of locals.bookings){%>
+    <div class="booking_list">
+
+        <span class="thick">Ticket Id : </span><span class="thin"><%=booking.id%></span><br>
+        <span class="thick">Journey Path : </span><span class="thin"><%=booking.path%></span><br>
+        <span  class="thick">Passengers : </span><span class="thin"><%=booking.passengers%></span><br>
+        <span class="thick">Cost : </span><span class="thin"><%=booking.cost%></span><br>
+        <span class="thick">Buy Date : </span ><span class="thin"><%=booking.createdAt%></span><br>
+    </div>
+         <%}%>
+    <%}%>
+</div>
 
 
+
+<!-- 
 
 <div id='order_board'>
     <%if(locals.bookings){%>
@@ -32,4 +48,4 @@
         <%}%>
     </div>
     <%}%>
-</div>
+</div> -->

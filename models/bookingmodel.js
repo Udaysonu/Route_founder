@@ -5,6 +5,7 @@ var bookingSchema=new Schema({
     ref:"user",
     required:true
 },
+
 cost:{type:String},
     passengers:{type:String,required:true},
     path:{
