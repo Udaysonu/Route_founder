@@ -53,9 +53,12 @@ class Graph{
     updateedge(body){
         var source=this.mapi[body.source]
         var destination=this.mapi[body.destination]
+        
         console.log(source,destination);
-        var temp=new Node(body.cost,body.distance,body.start_time,body.end_time);
+        console.log(body.cost)
+        var temp=new Node(parseInt(body.cost),parseInt(body.distance),body.start_time,body.end_time);
         this.adjmatrix[source][destination]=temp;
+        console.log(temp,"temp in algo controller")
     }
     getallpathhelper(a,b,k,visited){
         if(b==k){

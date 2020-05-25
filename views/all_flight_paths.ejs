@@ -1,5 +1,7 @@
  
 
+<link rel='stylesheet' type='text/css' href='/css/all_flight_paths.css'>
+
 
 <div class='outer outer-r b-r' class='inline' style='height:auto'>
 
@@ -22,12 +24,32 @@
         
     
     </div>
+    
+    <div class="card_background">
+      <%for(path of paths){%>
+        <table class="card_list">
+         <form  method='post'     action="/dashboard/updatePath">
+           <tr><td class="thick">Path_id</td> <td> <input type="text" name="id" value="<%=path.id%>" readonly></td></tr>
+           <tr><td class="thick">Source:</td>             <td>  <input type='text' name='source' readonly value='<%=path.source%>'> </td></tr>
+           <tr><td class="thick">Destination:</td>        <td>  <input type='text' name='destination' readonly value='<%=path.destination%>'> </td></tr>
+           <tr><td class="thick">Cost:</td> 	            <td>   <input type='number' name='cost' required value='<%=path.cost%>'>  </td></tr>
+           <tr><td class="thick">Distance:</td>           <td>  <input type='number' name='distance' required value='<%=path.distance%>'> </td></tr> 
+           <tr><td class="thick">Start Time:</td>         <td>  <input   name='start_time' required type="text"  value="<%=path.start_time%>" >  </td></tr>
+           <tr><td class="thick">End Time:</td>           <td>   <input   name='end_time' required type="text"  value="<%=path.end_time%>" ></td></tr>
+           <tr><td colspan="1"><button class="btn btn-Info" type="submit">Update Path</button></td>
+          </form>
+          <td><a href="/dashboard/deletePath/<%=path.id%>">
+            <button id="delete_btn"  class='btn btn-Danger'>  Delete Path </button>
+          </a> </td></tr>
+        </table>
+      <%}%>
+    </div>
   
-  <div>
+  <!-- <div>
       <div>
           
-      </div>
-  
+      </div> -->
+<!--   
       <div>
           <%for(path of paths){%>
                
@@ -96,6 +118,6 @@
   
           <%}%>
       </div>
-  
-  </div>
+   -->
+  <!-- </div> -->
    

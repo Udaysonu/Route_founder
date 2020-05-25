@@ -24,8 +24,10 @@ Paths.findById(req.params.id,function(err,path){
 
 module.exports.updatePath=function(req,res){
     algoController.updatePath(req.body)
+   
+
     Paths.findById(req.body.id,function(err,path){
-        console.log(path)
+        
         if(path.source!=req.body.source && path.destination!=req.body.destination){
             req.flash("erro","Your tried to change the database! warning counts");
             return res.redirect("back")
@@ -34,6 +36,7 @@ module.exports.updatePath=function(req,res){
         path.distance=req.body.distance
         path.start_time=req.body.start_time
         path.end_time=req.body.end_time
+        console.log(path)
         path.save()
         return res.redirect("back");
     })
