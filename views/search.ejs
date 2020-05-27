@@ -1,3 +1,4 @@
+<link type="text/css" rel="stylesheet" href="/css/search.css">
 <main class="full_screen">
   
 <div class='outer outer-r b-r' class='inline' style='height:auto'>
@@ -41,12 +42,61 @@
 </div>
 <div id='outer2' style='height: auto;'>
 
- 
+  <div class="search_details_card sticky">
+    <div class="details_table ">
+      <div> Start Time         </div>
+      <div>  End Time       </div>
+      <div>  Travel Time      </div>
+      <div>   Distance       </div>
+      <div>   Cost       </div>
+      <div>No of Passengers</div>
+      <div>    Book Now !    </div>
+    </div>
+  </div>
      <%count=0%>
     <%if(locals.values){%>
     
         <%for(value of values){%>
-       <div    class='container  full_width' style=' margin: 10px;'>
+
+          <div class="search_details_card">
+            <div class="path_div"> <%for(let i of value){%><%=i%>--><%}%></div>
+            <div class="details_table">
+              <div> <%=locals.time[count][0]%>         </div>
+              <div>    <%=locals.time[count][1]%>     </div>
+              <div>     <%=locals.travel_time[count]%> <br>  </div>
+              <div>   <%=locals.pric_dist[count][1]%>  KM    </div>
+              <div>  Rs.  <%=locals.pric_dist[count][0]%>       </div>
+              <div>    <form action='/booking/orderbooking' method='post'>
+                X
+                <select  class="input_tag pad" style="background-color: white;font-size: 10px;" id="passengers" name='passengers'>
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                  <option>6</option>
+                  <option>7</option>
+                  <option>8</option>
+                  <option>9</option>
+                  <option>10</option>
+              </select>
+                <!-- X <%=locals.pric_dist[count][0]%> <br> -->
+                <input hidden  name="user_id" value="<%=locals.user._id%>">
+                <input hidden  name="path" value="<%for(let i of value){%><%=i%>-><%}%>">
+                <input hidden name='cost' id='cost' value="<%=locals.pric_dist[count][0]%>">
+                 <button  type='submit' class="btn btn-danger">Book Now!</button> 
+                </form>
+                 </div>
+                
+                
+            
+                 </div>
+            </div>
+          
+           
+
+
+       <!-- <div    class='container  full_width' style=' margin: 10px;'>
         <div id=' ' style='text-align:center;'>
            
           
@@ -127,7 +177,7 @@
               
             
         </div>
-        
+         -->
       
       <%count+=1%>
        <%}%>

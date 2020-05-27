@@ -1,0 +1,29 @@
+.search_details_card{
+    display:flex;
+    flex-direction: column;
+    width:70vw;
+    padding:20px;
+    background-color: rgba(27,27,27, 0.8);
+    border-radius: 20px;
+    margin:20px;
+}
+.details_table{
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.path_div{
+    text-align: center;
+    color:yellow;
+    font-size:1.1rem;
+    font-weight: bold;
+}
+.sticky{
+    padding:5px;
+    position: sticky;
+    top:50px;
+    opacity: 1;
+    background-color: rgb(5, 92, 190);
+    z-index: 1;
+}
