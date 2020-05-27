@@ -5,7 +5,7 @@ var distprice=[]
 var paths=[]
 var waiting_time=[]
 var travelling_time=[]
-
+var time=[]
 
 
 class Node{
@@ -161,24 +161,30 @@ class Graph{
                             var total_travel_time=0
                             var totalprice=0
                             var totaldistance=0
+                            var start_time=null
+                            var end_time=null
                             for(let p=z.length-1;p>0 ;p--){
+                                if(start_time==null){
+                                    console.log("test")
+                                    start_time=this.adjmatrix[z[p]][z[p-1]].start_time;
+                                }
+                                end_time=this.adjmatrix[z[p]][z[p-1]].end_time;
                                 totalprice+=(this.adjmatrix[z[p]][z[p-1]].price)
                                 totaldistance+=(this.adjmatrix[z[p]][z[p-1]].distance)
                                 total_travel_time+=this.find_travel_time(this.adjmatrix[z[p]][z[p-1]].start_time,this.adjmatrix[z[p]][z[p-1]].end_time)
                                 total_waiting_time+=this.find_travel_time(start_time,this.adjmatrix[z[p]][z[p-1]].start_time)
-                                start_time=this.adjmatrix[z[p]][z[p-1]].end_time;
+                             
                             } 
                             distprice.push([totalprice,totaldistance])
                             for(let p=z.length-1;p>=0 ;p--){
                                 pk.push(this.revmapi[z[p]])
-                                 
-                                
-
                             } 
                            
                             paths.push(pk)
                             travelling_time.push(total_travel_time)
-                           
+                            console.log(start_time,end_time,"test")
+                            time.push([start_time,end_time])
+                            
                             waiting_time.push(total_waiting_time)
                             console.log()
                         }
@@ -243,7 +249,7 @@ module.exports.path_eval=function(req,res){
       paths=[]
       waiting_time=[]
       travelling_time=[]
-    
+    time=[]
    
 
     console.log(req.body.source,req.body.destination)
@@ -274,7 +280,7 @@ module.exports.path_eval=function(req,res){
    
 
    
-    res.render("search",{values:paths,pric_dist:distprice,wait_time:converted_waiting_time,travel_time:converted_travelling_time,journey_time:converted_journey_time});
+    res.render("search",{values:paths,pric_dist:distprice,wait_time:converted_waiting_time,travel_time:converted_travelling_time,journey_time:converted_journey_time,time:time});
 }
 
 module.exports.showPaths=function(req,res){

@@ -39,6 +39,7 @@
     
 
 </div>
+<div></div>
 <div id='outer2' style='height: auto;'>
 
  
@@ -46,7 +47,12 @@
     <%if(locals.values){%>
     
         <%for(value of values){%>
-       <div    class='container  full_width' style=' margin: 10px;'>
+        
+
+
+
+
+       <!-- <div    class='container  full_width' style=' margin: 10px;'>
         <div id=' ' style='text-align:center;'>
            
           
@@ -82,7 +88,12 @@
           <div class=' '><b><button type="button" class="btn btn-light"><b>Total Waiting Time</b></button></b>            <div class="btn-group" role="group" aria-label="Basic example">
             <span style="border:1px double white;padding:3px">  <%=locals.wait_time[count]%>  </span>
           </div> <br></div><br>
-
+          <div class=' '><b><button type="button" class="btn btn-light"><b>Start Time</b></button></b>            <div class="btn-group" role="group" aria-label="Basic example">
+            <span style="border:1px double white;padding:3px">  <%=locals.time[count][0]%>  </span>
+          </div> <br></div><br>
+          <div class=' '><b><button type="button" class="btn btn-light"><b>Ending Time</b></button></b>            <div class="btn-group" role="group" aria-label="Basic example">
+            <span style="border:1px double white;padding:3px">  <%=locals.time[count][1]%>  </span>
+          </div> <br></div><br>
 
 
 
@@ -123,7 +134,7 @@
             
         </div>
         
-      
+       -->
       <%count+=1%>
        <%}%>
         
