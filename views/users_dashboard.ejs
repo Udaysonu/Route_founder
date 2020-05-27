@@ -1,3 +1,6 @@
+
+<link rel='stylesheet' type='text/css' href='/css/all_flight_paths.css'>
+
 <div class='outer outer-r b-r' class='inline' style='height:auto'>
 
   <div class='container container-r b-r dd'>
@@ -21,13 +24,35 @@
   </div>
 
 <div>
-    <div>
-        
-    </div>
-
-    <div>
+    
+    <div class="card_background">
         <%for(user of users){%>
-            <img width=100 height=100 src=<%=user.avatar%>>
+
+          <table class="card_list">
+            
+            <form  method='post'    method='post' enctype="multipart/form-data"    action="/dashboard/updateUser/">
+              <tr><td><img width=100px height=100px src="<%=user.avatar%>"></td><td></td></tr>
+              <tr><td class="thick">Name</td> <td class="thin"> <input type="text" name="name" value="<%=user.name%>" ></td></tr>
+              <tr><td class="thick">Id:</td>             <td class="thin">  <input type='text' name='user_id' readonly value='<%=user.id%>'> </td></tr>
+              <tr><td class="thick">Email:</td>        <td class="thin">  <input type='text' name='email' readonly value='<%=user.email%>'> </td></tr>
+              <tr><td class="thick">Password:</td> 	            <td class="thin">   <input type='text' name='password' required value='<%=user.password%>'>  </td></tr>
+              <tr><td class="thick">Mobile:</td>           <td class="thin">  <input type='text' name='mobile' required value='<%=user.mobile%>'> </td></tr> 
+              <tr><td class="thick">Avatar:</td>         <td class="thin" width=50px style="width:20px;overflow: hidden;">  <input   name='avatar'  type="file" >  </td></tr>
+              <tr><td colspan="1"><button class="btn btn-Info" type="submit">Update Path</button></td>
+             </form>
+             <td><a href="/dashboard/deleteUser/<%=user._id%>">
+              <button id="delete_btn"  class='btn btn-Danger'>  Delete User </button>
+            </a>  </td></tr>
+           </table>
+
+
+
+
+
+
+
+
+            <!-- <img width=100 height=100 src=<%=user.avatar%>>
             
             <form method='post' enctype="multipart/form-data"    action="/dashboard/updateUser/">
             <table class="table table-striped">
@@ -80,7 +105,7 @@
             <br>
             <hr>
             <br>
-
+ -->
 
 
         <%}%>

@@ -13,7 +13,7 @@ Paths.findById(req.params.id,function(err,path){
         console.log("deleted path successfully")
         algoController.deletePath(path.source,path.destination)
     
-        return res.redirect("back");
+        return res.redirect("/dashboard/flightroutes/");
 
     })
 })
@@ -38,7 +38,7 @@ module.exports.updatePath=function(req,res){
         path.end_time=req.body.end_time
         console.log(path)
         path.save()
-        return res.redirect("back");
+        return res.redirect("/dashboard/flightroutes/");
     })
     
 }
@@ -113,7 +113,7 @@ try{
             if(err){
                 console.log(err);
             }
-           
+           console.log(req.body)
         User.findById(req.body.user_id,function(err,user){
            user.name=req.body.name;
            user.password=req.body.password;
@@ -127,7 +127,7 @@ try{
           user.save();
           console.log(user);
            req.flash('success','Profile Updated Succesfully');
-           return res.redirect('back');
+           return res.redirect("/dashboard/allusers/");
         }
 
          )            })

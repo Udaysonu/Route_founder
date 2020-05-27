@@ -14,7 +14,6 @@
   padding:20px;
   border:2px solid white;
   height:auto;
-  
   box-shadow: 4px 4px 10px 5px white;
   transition: 0.5s ease-in-out;
 }
@@ -34,7 +33,7 @@ tr{
   margin: 100px;
 }
 td{
-  padding:10px;
+  padding:5px;
 }
 tr:nth-child(2n+1){
   background-color:rgba(255, 255, 255, 0.5)
