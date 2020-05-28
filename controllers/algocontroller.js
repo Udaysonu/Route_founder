@@ -19,23 +19,24 @@ class Node{
 class Graph{
 
     constructor(nvertices){
-        this.nvertices=10;
+        this.nvertices=25;
     this.flight_paths=[];
     this.sources=new Set();
     this.destinations=new Set();
-    var gfg = new Array(10);  
+    var gfg = new Array(this.nvertices);  
     for (var i = 0; i < gfg.length; i++) { 
-        gfg[i] = new Array(10); 
+        gfg[i] = new Array(this.nvertices); 
     }
     var h = 0; 
-    for (var i = 0; i < 10; i++) { 
-        for (var j = 0; j < 10; j++) { 
+    for (var i = 0; i < this.nvertices; i++) { 
+        for (var j = 0; j < this.nvertices; j++) { 
             gfg[i][j] = null; 
         } 
     } 
       this.adjmatrix= gfg;
-        this.mapi={"Banglore":0,"Hyderabad":1,"Chennai":2,"Amritsar":3,"Delhi":4,"Mumbai":5,"Pudichery":6,"Noida":7,"Gurgaon":8,"Bhopal":9}
-        this.revmapi={0:"Banglore",1:"Hyderabad",2:"Chennai",3:"Amritsar",4:"Delhi",5:"Mumbai",6:"Pudichery",7:"Noida",8:"Gurgaon",9:"Bhopal"}
+            
+        this.mapi={"Abu Dhabi":0,"Bali":1,"Bangkok":2,"Barcelona":3,"Canberra":4,"Colombo":5,"Delhi":6,"Dhaka":7,"Dubai":8,"Hong Kong":9,"Hyderabad":10,"Islamabad":11,"Karachi":12,"Kathmandu":13,"Kuala Lampur":14,"London":15,"Los Angeles":16,"Mecca":17,"Mumbai":18,"New York":19,"Rome":20,"Seoul":21,"Shanghai":22,"Singapore":23};
+        this.revmapi={0:"Abu Dhabi",1:"Bali",2:"Bangkok",3:"Barcelona",4:"Canberra",5:"Colombo",6:"Delhi",7:"Dhaka",8:"Dubai",9:"Hong Kong",10:"Hyderabad",11:"Islamabad",12:"Karachi",13:"Kathmandu",14:"Kuala Lampur",15:"London",16:"Los Angeles",17:"Mecca",18:"Mumbai",19:"New York",20:"Rome",21:"Seoul",22:"Shanghai",23:"Singapore"};
 
      }
     addedge(a,b,price,distance,start_tim,end_tim){
@@ -43,6 +44,7 @@ class Graph{
         a=this.mapi[a]
         b=this.mapi[b]
         var temp=new Node(price,distance,start_tim,end_tim);
+        console.log("hello")
         this.adjmatrix[a][b]=temp;
     }
     removeedge(source,destination){
@@ -142,7 +144,8 @@ class Graph{
 
         a=this.mapi[a]
         k=this.mapi[k]
-        for(let i=0;i<10;i++){
+        console.log(a,k)
+        for(let i=0;i<this.nvertices;i++){
            var visited={}
             for(let j=0;j<10;j++){
                 visited[j]=false;

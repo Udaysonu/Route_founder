@@ -7,29 +7,59 @@
  
     <form action='/algo/path' method='post'>
         <div class='input inline inline-r '> <select class="input_tag pad" name='source'>
-            <option> Banglore</option>
-            <option> Hyderabad</option>
-            <option> Chennai </option>
-            <option> Delhi </option>
-            <option>Amritsar</option>
-            <option>Bhopal</option>
-            <option>Noida</option>
-            <option>Amritsar</option>
-            <option>Gurgaon</option>
-            <option>Pudichery</option>
+            <option> Abu Dhabi</option>
+            <option> Bali</option>
+            <option> Bangkok </option>
+            <option> Barcelona </option>
+            <option>Canberra</option>
+            <option>Colombo</option>
+            <option>Delhi</option>
+            <option>Dhaka</option>
+            <option>Dubai</option>
+            <option>Hong Kong</option>
+            <option>Hyderabad</option>
+            <option>Islamabad</option>
+            <option>Karachi</option>
+            <option>Kathmandu</option>
+            <option>Kuala Lampur</option>
+            <option>London</option>
+            <option>Los Angeles</option>
+            <option>Mecca</option>
+            <option>Mumbai</option>
+            <option>New York</option>
+            <option>Rome</option>
+            <option>Seoul</option>
+            <option>Shanghai</option>
+            <option>Singapore</option>
+            
         </select></div>
         
         <div class='input inline inline-r'> <select class="input_tag pad" name='destination'>
-            <option> Banglore</option>
-            <option> Hyderabad</option>
-            <option> Chennai </option>
-            <option> Delhi </option>
-            <option>Amritsar</option>
-            <option>Bhopal</option>
-            <option>Noida</option>
-            <option>Amritsar</option>
-            <option>Gurgaon</option>
-            <option>Pudichery</option>
+          <option> Abu Dhabi</option>
+            <option> Bali</option>
+            <option> Bangkok </option>
+            <option> Barcelona </option>
+            <option>Canberra</option>
+            <option>Colombo</option>
+            <option>Delhi</option>
+            <option>Dhaka</option>
+            <option>Dubai</option>
+            <option>Hong Kong</option>
+            <option>Hyderabad</option>
+            <option>Islamabad</option>
+            <option>Karachi</option>
+            <option>Kathmandu</option>
+            <option>Kuala Lampur</option>
+            <option>London</option>
+            <option>Los Angeles</option>
+            <option>Mecca</option>
+            <option>Mumbai</option>
+            <option>New York</option>
+            <option>Rome</option>
+            <option>Seoul</option>
+            <option>Shanghai</option>
+            <option>Singapore</option>
+            
         </select></div>
        <div class='input inline' >
         <button  class="btn_ pad"><i class='fa fa-search'></i></button>
@@ -84,7 +114,7 @@
                 <input hidden  name="user_id" value="<%=locals.user._id%>">
                 <input hidden  name="path" value="<%for(let i of value){%><%=i%>-><%}%>">
                 <input hidden name='cost' id='cost' value="<%=locals.pric_dist[count][0]%>">
-                 <button  type='submit' class="btn btn-danger">Book Now!</button> 
+                 <button id="submit"  type='submit' class="btn btn-danger">Book Now!</button> 
                 </form>
                  </div>
                 
