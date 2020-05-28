@@ -69,7 +69,7 @@ class Graph{
         visited[b]=true
         var mainbool=false
         var mainlis=[]
-        for(let i=0;i<10;i++){
+        for(let i=0;i<this.nvertices;i++){
           
          if(visited[i]==false && this.adjmatrix[b][i]!=null){
             var check=this.getallpathhelper(b,i,k,visited)
@@ -147,7 +147,7 @@ class Graph{
         console.log(a,k)
         for(let i=0;i<this.nvertices;i++){
            var visited={}
-            for(let j=0;j<10;j++){
+            for(let j=0;j<this.nvertices;j++){
                 visited[j]=false;
             }
             visited[a]=true;
