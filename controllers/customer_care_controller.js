@@ -14,6 +14,6 @@ module.exports.create=async function(req,res){
     
 }
 module.exports.delete=function(req,res){
-    console.log("delete ufnctioanot clalrlewd sfdahlaksjfdilah dfalkds",req.params.id)
+    console.log("deleted the user",req.params.id)
     
 }

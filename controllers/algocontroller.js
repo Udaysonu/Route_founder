@@ -41,11 +41,14 @@ class Graph{
      }
     addedge(a,b,price,distance,start_tim,end_tim){
         this.flight_paths.push([a,b,price,distance,start_tim,end_tim]);
+        console.log(a)
         a=this.mapi[a]
         b=this.mapi[b]
         var temp=new Node(price,distance,start_tim,end_tim);
         console.log("hello")
+        console.log(a,b)
         this.adjmatrix[a][b]=temp;
+        
     }
     removeedge(source,destination){
         source=this.mapi[source]
@@ -198,7 +201,7 @@ class Graph{
         }
     }
 }
-b1=new Graph(10);
+b1=new Graph(25);
 
 function loadpath(){
     PathInfo.find({},function(err,paths){
@@ -236,12 +239,20 @@ module.exports.updatePath=function(body){
 
 
 module.exports.addPath=function(req,res){
-
+    if(b1.mapi[req.body.source]==undefined || b1.mapi[req.body.destination]==undefined){
+        console.log("error in creating the path")
+            req.flash("error",'Error in creating the Path')
+            return res.redirect("back");
+        
+    }
+    console.log(b1.mapi[req.body.source],b1.mapi[req.body.destination])
     PathInfo.create(req.body,function(err,path){
         if(err){
+            req.flash("error",'Error in creating the Path')
             console.log("Error in creating the path");
             return res.redirect("back");
         }
+        req.flash("success","Path created successfully!")
         console.log("Path Created Succesfully");
         return res.redirect("back");
     })   

@@ -2,6 +2,7 @@ const Booking=require("../models/bookingmodel");
 const User=require("../models/usermodel");
 const Paths=require("../models/pathmodel");
 const algoController=require("../controllers/algocontroller")
+const mapi={"Abu Dhabi":0,"Bali":1,"Bangkok":2,"Barcelona":3,"Canberra":4,"Colombo":5,"Delhi":6,"Dhaka":7,"Dubai":8,"Hong Kong":9,"Hyderabad":10,"Islamabad":11,"Karachi":12,"Kathmandu":13,"Kuala Lampur":14,"London":15,"Los Angeles":16,"Mecca":17,"Mumbai":18,"New York":19,"Rome":20,"Seoul":21,"Shanghai":22,"Singapore":23};
 module.exports.deletePath=function(req,res){
     console.log(req.params.id)
 Paths.findById(req.params.id,function(err,path){
@@ -23,10 +24,18 @@ Paths.findById(req.params.id,function(err,path){
 
 
 module.exports.updatePath=function(req,res){
+    if(mapi[req.body.source]==undefined || mapi[req.body.destination]==undefined){
+            console.log(mapi[req.body.source],mapi[req.body.destination])
+            req.flash("error","Ërror in updating the path!!")
+            return res.redirect("/dashboard/flightroutes/");
+        
+    }
+
     algoController.updatePath(req.body)
    
 
     Paths.findById(req.body.id,function(err,path){
+
         
         if(path.source!=req.body.source && path.destination!=req.body.destination){
             req.flash("erro","Your tried to change the database! warning counts");
@@ -38,6 +47,7 @@ module.exports.updatePath=function(req,res){
         path.end_time=req.body.end_time
         console.log(path)
         path.save()
+        req.flash("success","Path updated successfully !")
         return res.redirect("/dashboard/flightroutes/");
     })
     
@@ -69,6 +79,7 @@ module.exports.addpath=function(req,res){
 }
 
 module.exports.specificPath=function(req,res){
+   
     var details={}
     if(req.body.source!=""){
         details.source=req.body.source;

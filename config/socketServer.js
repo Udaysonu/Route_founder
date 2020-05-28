@@ -62,7 +62,7 @@ server.listen(5000,function(err){
         socket.join(data.room)
         room=data.room
         console.log("Main server joined room")
-        io.in(room).emit("receive_message",{msg:"You Joined to the room"})
+        io.in(room).emit("receive_message",{msg:"Customer Care Representative Joined to the room"})
          
         socket.on("send_message",function(data){
 
