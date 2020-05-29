@@ -5,14 +5,15 @@ html {
 body{
     background-image: linear-gradient( #2196f3 , #0ff2fe );
     color:white;
+    
     background-attachment: fixed;
     
 }
 body{
-    background-image:url("../images//aeroplane.jpg");
+    background-image:url("../images//aeroplane2.jpg");
     background-position: center;
     background-attachment: fixed;
-    background-size: inherit;
+    background-size: cover;
 }
 
 h2{font-weight: bolder;
@@ -39,7 +40,8 @@ h2{font-weight: bolder;
     border-radius: 0.5rem;
     padding:8px;
     width: auto;
-    background-color: rgba(0, 0, 0, 0.211)
+    background-color: rgba(0, 0, 0, 0.5);
+    transition:0.5s ease-in-out;
 }
 .full_width{
     width:90%;
@@ -136,7 +138,10 @@ small{
 .margin-high{
     margin-top: 5rem;
 }
-
+.container:hover{
+    
+    background-color: rgba(0, 0, 0, 0.7)
+}
 @media screen and (max-width:450px){
     .outer-r{
         height:auto;

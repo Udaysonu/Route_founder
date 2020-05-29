@@ -35,8 +35,8 @@ class Graph{
     } 
       this.adjmatrix= gfg;
             
-        this.mapi={"Abu Dhabi":0,"Bali":1,"Bangkok":2,"Barcelona":3,"Canberra":4,"Colombo":5,"Delhi":6,"Dhaka":7,"Dubai":8,"Hong Kong":9,"Hyderabad":10,"Islamabad":11,"Karachi":12,"Kathmandu":13,"Kuala Lampur":14,"London":15,"Los Angeles":16,"Mecca":17,"Mumbai":18,"New York":19,"Rome":20,"Seoul":21,"Shanghai":22,"Singapore":23};
-        this.revmapi={0:"Abu Dhabi",1:"Bali",2:"Bangkok",3:"Barcelona",4:"Canberra",5:"Colombo",6:"Delhi",7:"Dhaka",8:"Dubai",9:"Hong Kong",10:"Hyderabad",11:"Islamabad",12:"Karachi",13:"Kathmandu",14:"Kuala Lampur",15:"London",16:"Los Angeles",17:"Mecca",18:"Mumbai",19:"New York",20:"Rome",21:"Seoul",22:"Shanghai",23:"Singapore"};
+        this.mapi={"Abu Dhabi":0,"Bali":1,"Bangkok":2,"Barcelona":3,"Canberra":4,"Colombo":5,"Delhi":6,"Dhaka":7,"Dubai":8,"Hong Kong":9,"Hyderabad":10,"Islamabad":11,"Karachi":12,"Kathmandu":13,"Kuala Lampur":14,"London":15,"Los Angeles":16,"Mecca":17,"Mumbai":18,"New York":19,"Rome":20,"Seoul":21,"Shangai":22,"Singapore":23};
+        this.revmapi={0:"Abu Dhabi",1:"Bali",2:"Bangkok",3:"Barcelona",4:"Canberra",5:"Colombo",6:"Delhi",7:"Dhaka",8:"Dubai",9:"Hong Kong",10:"Hyderabad",11:"Islamabad",12:"Karachi",13:"Kathmandu",14:"Kuala Lampur",15:"London",16:"Los Angeles",17:"Mecca",18:"Mumbai",19:"New York",20:"Rome",21:"Seoul",22:"Shangai",23:"Singapore"};
 
      }
     addedge(a,b,price,distance,start_tim,end_tim){
