@@ -41,12 +41,11 @@ class Graph{
      }
     addedge(a,b,price,distance,start_tim,end_tim){
         this.flight_paths.push([a,b,price,distance,start_tim,end_tim]);
-        console.log(a)
+      
         a=this.mapi[a]
         b=this.mapi[b]
         var temp=new Node(price,distance,start_tim,end_tim);
-        console.log("hello")
-        console.log(a,b)
+         
         this.adjmatrix[a][b]=temp;
         
     }
@@ -59,11 +58,10 @@ class Graph{
         var source=this.mapi[body.source]
         var destination=this.mapi[body.destination]
         
-        console.log(source,destination);
-        console.log(body.cost)
+        
         var temp=new Node(parseInt(body.cost),parseInt(body.distance),body.start_time,body.end_time);
         this.adjmatrix[source][destination]=temp;
-        console.log(temp,"temp in algo controller")
+       
     }
     getallpathhelper(a,b,k,visited){
         if(b==k){
@@ -80,7 +78,7 @@ class Graph{
              
             if(check[0]){
                 for(let i of check[1]){
-                    console.log(i)
+                  
                     i.push(b)
                     mainlis.push(i)
                 }
@@ -91,7 +89,7 @@ class Graph{
         return [mainbool,mainlis]
     }
     find_travel_time(start_time,end_time){
-        console.log(start_time,end_time)
+        
         if(start_time==null){
             start_time=end_time;
         }
@@ -134,7 +132,7 @@ class Graph{
            hour_diff+=24;
        }
        //  console.log(start_hour,start_min,end_hour,end_min,hour_diff,min_diff)
-        console.log(hour_diff*60+min_diff)
+        
         return hour_diff*60+min_diff
     }
 
@@ -147,7 +145,7 @@ class Graph{
 
         a=this.mapi[a]
         k=this.mapi[k]
-        console.log(a,k)
+        
         for(let i=0;i<this.nvertices;i++){
            var visited={}
             for(let j=0;j<this.nvertices;j++){
@@ -171,7 +169,7 @@ class Graph{
                             var end_time=null
                             for(let p=z.length-1;p>0 ;p--){
                                 if(start_time==null){
-                                    console.log("test")
+                                     
                                     start_time=this.adjmatrix[z[p]][z[p-1]].start_time;
                                 }
                                 end_time=this.adjmatrix[z[p]][z[p-1]].end_time;
@@ -188,11 +186,11 @@ class Graph{
                            
                             paths.push(pk)
                             travelling_time.push(total_travel_time)
-                            console.log(start_time,end_time,"test")
+                            
                             time.push([start_time,end_time])
                             
                             waiting_time.push(total_waiting_time)
-                            console.log()
+                            
                         }
                         
                     }
@@ -219,7 +217,7 @@ loadpath()
 
 
 module.exports.deletePath=function(source,destination){
-    console.log(source,destination);
+ 
     b1.removeedge(source,destination);
     return 
 }
@@ -228,7 +226,7 @@ module.exports.deletePath=function(source,destination){
 
 
 module.exports.updatePath=function(body){
-    console.log(body)
+  
     b1.updateedge(body);
     return 
 }
@@ -245,7 +243,7 @@ module.exports.addPath=function(req,res){
             return res.redirect("back");
         
     }
-    console.log(b1.mapi[req.body.source],b1.mapi[req.body.destination])
+   
     PathInfo.create(req.body,function(err,path){
         if(err){
             req.flash("error",'Error in creating the Path')
@@ -266,10 +264,10 @@ module.exports.path_eval=function(req,res){
     time=[]
    
 
-    console.log(req.body.source,req.body.destination)
+   
     b1.getallpath(req.body.source,req.body.destination) 
    
-    console.log(paths,waiting_time,travelling_time)
+   
     var journey_time=[]
     for(let i=0;i<waiting_time.length;i++){
        journey_time.push(waiting_time[i]+travelling_time[i])
@@ -288,11 +286,7 @@ module.exports.path_eval=function(req,res){
    converter(waiting_time,converted_waiting_time)
    converter(travelling_time,converted_travelling_time)
    converter(journey_time,converted_journey_time)
-    console.log(waiting_time,converted_waiting_time)
-    console.log(journey_time,converted_journey_time)
-    console.log(travelling_time,converted_travelling_time)
-   
-
+ 
    
     res.render("search",{values:paths,pric_dist:distprice,wait_time:converted_waiting_time,travel_time:converted_travelling_time,journey_time:converted_journey_time,time:time});
 }

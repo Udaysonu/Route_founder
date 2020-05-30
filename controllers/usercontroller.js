@@ -15,11 +15,11 @@ module.exports.signup=function(req,res){
 //checking password and repassword are equal or not
 // if it details satisfy the above conditions then creating user in database
 module.exports.createuser=async function(req,res){
-    console.log(req.body);
+   
     user=await User.findOne({email:req.body.email});
     //checking whether user with email already present in database
     if(user){
-        console.log("user already presernt",user);
+       
         req.flash("error","Email Already Exists")
         res.redirect("back");
         return;
@@ -28,7 +28,7 @@ module.exports.createuser=async function(req,res){
     if(req.body.password!=req.body.re_password){
 
 
-        console.log("Password and Re-password does not match");
+       
         req.flash("error","Password and Re_password does not match!!")
         res.redirect("back")
         return ;
@@ -67,7 +67,7 @@ module.exports.routesearch=function(req,res){
     res.render("search");
 }
 module.exports.update=function(req,res){
-    console.log(req.user.id)
+     
     User.findById(req.user.id,function(err,user){
         if(err){
             console.log(err);
@@ -103,11 +103,11 @@ module.exports.update_user= function(req,res){
              
            if(req.file){
                                          user.avatar=User.avatarPath+'/'+req.file.filename;
-                                         console.log(user.avatar);
+                                       
                                      }
-           console.log(req.file)
+           
            user.save();
-           console.log(user);
+          
             req.flash('success','Profile Updated Succesfully');
             return res.redirect('back');
         
