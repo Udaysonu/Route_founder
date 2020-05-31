@@ -93,7 +93,8 @@
             <div class="details_table">
               <div> <%=locals.time[count][0]%>         </div>
               <div>    <%=locals.time[count][1]%>     </div>
-              <div>     <%=locals.travel_time[count]%> <br>  </div>
+              <div>     <%=locals.journey_time[count]%><br><small>(<%=wait_time[count]%><br>+<br><%=travel_time[count]%>)</small><br>
+                <small>(wait +fly time)</small>  </div>
               <div>   <%=locals.pric_dist[count][1]%>  KM    </div>
               <div>  Rs.  <%=locals.pric_dist[count][0]%>       </div>
               <div>    <form action='/booking/orderbooking' method='post'>
