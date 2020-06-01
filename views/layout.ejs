@@ -53,5 +53,14 @@
         timeout:1500
     }).show()  
 <%}%>
+<%if(flash.info && flash.info.length>0){%>
+    new Noty({
+        theme:'relax',
+        text:'<%=flash.info%>',
+        type:"info",
+        layout:'topRight',
+        timeout:1500
+    }).show()  
+<%}%>
 </script>
 </html>
