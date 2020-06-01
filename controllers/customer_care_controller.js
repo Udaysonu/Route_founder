@@ -1,3 +1,4 @@
+//requiring required models
 const chat_cc=require("../models/chatmodel");
 
 //function to identify all the active users in the chatbox

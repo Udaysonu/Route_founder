@@ -1,5 +1,5 @@
+//requiring the required models
 var PathInfo=require("../models/pathmodel");
-
 
 var distprice=[]
 var paths=[]
