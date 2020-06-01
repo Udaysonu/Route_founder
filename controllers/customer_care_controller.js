@@ -1,19 +1,15 @@
 const chat_cc=require("../models/chatmodel");
-module.exports.customercare=function(req,res){
-chat_cc.find().populate('chat_id').exec(function(err,customers){
- 
-    return res.render("chatroom_cc",{customers:customers});
-})
-   
 
-}
-module.exports.create=async function(req,res){
-    console.log("here")
-  
-
-    
-}
-module.exports.delete=function(req,res){
-    console.log("deleted the user",req.params.id)
-    
+//function to identify all the active users in the chatbox
+module.exports.customercare=async function(req,res){
+    try
+    {
+        //finding every active user in chatbox and populating their details
+        var customers=chat_cc.find({}).populate('chat_id');
+        return res.render("chatroom_cc",{customers:customers});
+    }
+    catch(err)
+    {
+        console.log("Error in customer_care_controller->customercare",err);   
+    }
 }
