@@ -6,7 +6,7 @@ module.exports.customercare=async function(req,res){
     try
     {
         //finding every active user in chatbox and populating their details
-        var customers=chat_cc.find({}).populate('chat_id');
+        var customers= await chat_cc.find({}).populate('chat_id');
         return res.render("chatroom_cc",{customers:customers});
     }
     catch(err)
