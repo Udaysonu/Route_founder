@@ -3,8 +3,8 @@ const Booking=require("../models/bookingmodel");
 const User=require("../models/usermodel");
 const Paths=require("../models/pathmodel");
 const algoController=require("../controllers/algocontroller");
-const mapi={"hyderabad":0,"mumbai":1,"delhi":2,"kolkata":3,"banglore":4,"goa":5,"chennai":6,"bhopal":7,"amritsar":8};
-const revmapi={0:"hyderabad",1:"mumbai",2:"delhi",3:"kolkata",4:"banglore",5:"goa",6:"chennai",7:"bhopal",8:"amritsar"};
+const mapi={"Hyderabad":0,"Mumbai":1,"Delhi":2,"Jaipur":3,"Banglore":4,"Kochi":5,"Chennai":6,"Bhopal":7,"Amritsar":8,"Guwahati":9,"Srinagar":10,"Amaravati":11,"Vishakhapatanam":12,"Agra":13};
+const revmapi={0:"Hyderabad",1:"Mumbai",2:"Delhi",3:"Jaipur",4:"Banglore",5:"Kochi",6:"Chennai",7:"Bhopal",8:"Amritsar",9:"Guwahati",10:"Srinagar",11:"Amaravati",12:"Vishakhapatanam",14:"Agra"};
 //FUNCTIONS ARE WRITTEN IN THE FOLLOWING ORDER
 //1->deletePath
 //2->updatePath

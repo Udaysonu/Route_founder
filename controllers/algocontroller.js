@@ -7,7 +7,7 @@ var paths=[]
 var waiting_time=[]
 var travelling_time=[]
 var time=[]
-
+var all_intervals=[]
 //Node to store the values
 
     class Node{
@@ -54,8 +54,8 @@ var time=[]
             } 
             this.adjmatrix= mat;
             //using mapi and revmapi to conver names to indices and vice versa     
-            this.mapi={"hyderabad":0,"mumbai":1,"delhi":2,"kolkata":3,"banglore":4,"goa":5,"chennai":6,"bhopal":7,"amritsar":8};
-            this.revmapi={0:"hyderabad",1:"mumbai",2:"delhi",3:"kolkata",4:"banglore",5:"goa",6:"chennai",7:"bhopal",8:"amritsar"};
+            this.mapi={"Hyderabad":0,"Mumbai":1,"Delhi":2,"Jaipur":3,"Banglore":4,"Kochi":5,"Chennai":6,"Bhopal":7,"Amritsar":8,"Guwahati":9,"Srinagar":10,"Amaravati":11,"Vishakhapatanam":12,"Agra":13};
+            this.revmapi={0:"Hyderabad",1:"Mumbai",2:"Delhi",3:"Jaipur",4:"Banglore",5:"Kochi",6:"Chennai",7:"Bhopal",8:"Amritsar",9:"Guwahati",10:"Srinagar",11:"Amaravati",12:"Vishakhapatanam",14:"Agra"};
         }
     
     
@@ -270,11 +270,11 @@ var time=[]
                             {   
                                 //pushing source into path 
                                 z.push(a);
-                                console.log(z);
+                                 
     
                                 //this function gives all paths connecting all nodes in the list from source to destination
                                 var all_paths=this.get_permuatation_paths(z);
-                                console.log(all_paths)
+                                 
     
                                 //run loop on all_paths (since all_paths is combination of different nodes from source to destination)
                                 for(let single_path of all_paths)
@@ -288,7 +288,7 @@ var time=[]
                                         var start_time=null
                                         var end_time=null;
                                         var prev_end_time=null;
-    
+                                        var intervals=[]
                                         //running loop on each node on single_path
                                         for(let i=0; i<single_path.length;i++)
                                         {                                        
@@ -296,6 +296,7 @@ var time=[]
                                                 {
                                                     start_time=single_path[i].start_time;
                                                 }
+                                                intervals.push([single_path[i].start_time,single_path[i].end_time])
                                                 end_time=single_path[i].end_time;
                                                 totalprice+=(single_path[i].price);
                                                 totaldistance+=(single_path[i].distance);
@@ -313,13 +314,13 @@ var time=[]
                                             pk.push(this.revmapi[z[p]])
                                 
                                         } 
-                                        console.log(pk,z);
+                                        
                                     
                                         paths.push(pk)
                                         travelling_time.push(total_travel_time)
                                         
                                         time.push([start_time,end_time])
-                                        
+                                        all_intervals.push(intervals)
                                         waiting_time.push(total_waiting_time)
     
     
@@ -340,7 +341,7 @@ var time=[]
     }
 
 
-b1=new Graph(10);
+b1=new Graph(15);
 
 function loadpath(){
     PathInfo.find({},function(err,paths){
@@ -402,12 +403,15 @@ module.exports.addPath=function(req,res){
 //function to evaluate all paths
 module.exports.path_eval=function(req,res){
     try
-    {
+    {   
+        //set the arrays to empty
+        //because they have already sotred previous search results
         distprice=[]
         paths=[]
         waiting_time=[]
         travelling_time=[]
-      time=[]
+        all_intervals=[]
+        time=[]
      
   
      
@@ -432,9 +436,8 @@ module.exports.path_eval=function(req,res){
      converter(waiting_time,converted_waiting_time)
      converter(travelling_time,converted_travelling_time)
      converter(journey_time,converted_journey_time)
-   
-     
-      res.render("search",{values:paths,pric_dist:distprice,wait_time:converted_waiting_time,travel_time:converted_travelling_time,journey_time:converted_journey_time,time:time});
+      
+     res.render("search",{values:paths,pric_dist:distprice,wait_time:converted_waiting_time,travel_time:converted_travelling_time,journey_time:converted_journey_time,time:time,all_intervals:all_intervals});
   
     }
     catch(err)

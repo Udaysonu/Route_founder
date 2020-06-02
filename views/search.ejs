@@ -6,22 +6,41 @@
 <div class='container container-r b-r dd'>
  
     <form action='/algo/path' method='post'>
-        <div class='input inline inline-r '> <select class="input_tag pad" name='source'>
-            <option> hyderabad</option>
-            <option> mumbai</option>
-            <option> delhi </option>
-            <option> bhopal </option>
-           
-             
+        <div class='input inline inline-r '> 
+          <select class="input_tag pad" name='source'>
+            <option> Agra</option>
+            <option>Amaravati</option>
+            <option> Amritsar</option>
+            <option> Banglore </option>
+            <option>Bhopal</option>
+            <option>Chennai</option>
+            <option> Delhi </option>
+            <option>Guwahati</option>
+            <option>  Hyderabad</option>
+            <option>Jaipur</option>
+            <option>Kochi</option>
+            <option>Mumbai</option>
+            <option>Srinagar</option>
+            <option>Vishakhapatanam</option>
+
         </select></div>
         
-        <div class='input inline inline-r'> <select class="input_tag pad" name='destination'>
-          <option> hyderabad</option>
-          <option> mumbai</option>
-          <option> delhi </option>
-          <option> bhopal </option>
-         
-            
+        <div class='input inline inline-r'> 
+        <select class="input_tag pad" name='destination'>
+          <option> Agra</option>
+          <option>Amaravati</option>
+          <option> Amritsar</option>
+          <option> Banglore </option>
+          <option>Bhopal</option>
+          <option>Chennai</option>
+          <option> Delhi </option>
+          <option>Guwahati</option>
+          <option>  Hyderabad</option>
+          <option>Jaipur</option>
+          <option>Kochi</option>
+          <option>Mumbai</option>
+          <option>Srinagar</option>
+          <option>Vishakhapatanam</option>
         </select></div>
        <div class='input inline' >
         <button  class="btn_ pad"><i class='fa fa-search'></i></button>
@@ -51,10 +70,12 @@
         <%for(value of values){%>
 
           <div class="search_details_card">
-            <div class="path_div"> <%for(let i of value){%><%=i%>--><%}%></div>
+            <%var intervals=all_intervals[count]%>
+           
+            <div class="path_div"> <%for(let i=0;i<value.length;i++){%><%=value[i]%>-<small style='color:rgb(0, 195, 255)'><%=intervals[i]%>%></small>-><%}%></div>
             <div class="details_table">
-              <div> <%=locals.time[count][0]%>         </div>
-              <div>    <%=locals.time[count][1]%>     </div>
+              <div> <%=locals.time[count][0]%>  <br><small>(24hr clock)</small>      </div>
+              <div>    <%=locals.time[count][1]%><br><small>(24hr clock)</small>      </div>
               <div>     <%=locals.journey_time[count]%><br><small>(<%=wait_time[count]%><br>+<br><%=travel_time[count]%>)</small><br>
                 <small>(wait +fly time)</small>  </div>
               <div>   <%=locals.pric_dist[count][1]%>  KM    </div>
