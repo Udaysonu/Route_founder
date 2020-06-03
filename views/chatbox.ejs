@@ -92,65 +92,65 @@ src="https://code.jquery.com/jquery-3.4.1.min.js"
 integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
 crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
-<script>
-  var socket = io('http://localhost:5000');
-  
-  socket.emit('join_room', {room:"<%=user.id%>"});
-  var user='<%=locals.user.name%>'
-  var avatar="<$=locals.user.avatar>"
-  socket.on("receive_message",function(data){
-    if(data.sender!="<%=user.id%>"){
-        $("#chat_messages").append(`<div class="msg left-msg">
-        <div
-         class="msg-img"
-         style="background-image: url(https://image.flaticon.com/icons/svg/327/327779.svg)"
-        ></div>
-  
-        <div   class="msg-bubble">
+<script >
+ var socket = io('http://localhost:5000');
+console.log($`{user.id}`)
+socket.emit('join_room', {room:"<%=user.id%>"});
+var user='<%=locals.user.name%>'
+var avatar="<$=locals.user.avatar>"
+socket.on("receive_message",function(data){
+  if(data.sender!="<%=user.id%>"){
+      $("#chat_messages").append(`<div class="msg left-msg">
+      <div
+       class="msg-img"
+       style="background-image: url(https://image.flaticon.com/icons/svg/327/327779.svg)"
+      ></div>
 
-          <div class="msg-info">
-            <div class="msg-info-name">CustomerCare</div>
-            <div class="msg-info-time">12:45</div>
-          </div>
-  
-          <div class="msg-text other-message">
-            ${data.msg}
-          </div>
+      <div   class="msg-bubble">
+
+        <div class="msg-info">
+          <div class="msg-info-name">CustomerCare</div>
+          <div class="msg-info-time">12:45</div>
         </div>
-      </div>`)
-      }
-      else{
-        $("#chat_messages").append(` <div class="self-message msg right-msg">
-        <div
-         class="msg-img"
-         
-         style="background-image: url(https://image.flaticon.com/icons/svg/145/145867.svg)">
-         
+
+        <div class="msg-text other-message">
+          ${data.msg}
         </div>
-  
-        <div class="msg-bubble">
-          <div class="msg-info">
-            <div class="msg-info-name">${user}</div>
-            <div class="msg-info-time">12:46</div>
-          </div>
-  
-          <div class="msg-text ">
-            ${data.msg}
-          </div>
+      </div>
+    </div>`)
+    }
+    else{
+      $("#chat_messages").append(` <div class="self-message msg right-msg">
+      <div
+       class="msg-img"
+       
+       style="background-image: url(https://image.flaticon.com/icons/svg/145/145867.svg)">
+       
+      </div>
+
+      <div class="msg-bubble">
+        <div class="msg-info">
+          <div class="msg-info-name">${user}</div>
+          <div class="msg-info-time">12:46</div>
         </div>
-      </div>`)
-      }
-      var d = $('#chat_messages');
+
+        <div class="msg-text ">
+          ${data.msg}
+        </div>
+      </div>
+    </div>`)
+    }
+    var d = $('#chat_messages');
 d.scrollTop(d.prop("scrollHeight"));
 
-      console.log("info-sen",data.sender,data)
-  });
-  var btn=document.getElementById("message_send");
-  btn.addEventListener('click',function(e){
-      e.preventDefault();
-      var input_text=$('#input_text').val()
-      console.log("clicked",input_text)
-      socket.emit("send_message",{msg:input_text,sender:'<%=user.id%>'})
-      $("#input_text").val("")
-  })
+    console.log("info-sen",data.sender,data)
+});
+var btn=document.getElementById("message_send");
+btn.addEventListener('click',function(e){
+    e.preventDefault();
+    var input_text=$('#input_text').val()
+    console.log("clicked",input_text)
+    socket.emit("send_message",{msg:input_text,sender:'<%=user.id%>'})
+    $("#input_text").val("")
+})
 </script>
