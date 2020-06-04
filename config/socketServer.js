@@ -32,6 +32,8 @@ module.exports.chatserver=function(server)
             async function create_customer(data)
             {  
                 room=data.room
+                //finding whether the user already present in database
+                //if user already present in database we avoid creating user again
                 var user=await chat_cc.findOne({chat_id:room})
                 if(user)
                 {

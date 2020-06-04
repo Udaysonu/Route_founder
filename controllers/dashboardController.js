@@ -78,7 +78,7 @@ module.exports.updatePath=async function(req,res)
                 //raising error and return if source and destination does not match with database entry
                 if(path.source!=req.body.source && path.destination!=req.body.destination)
                 {
-                    req.flash("erro","Your tried to change the database! warning counts");
+                    
                     return res.redirect("back");
                 }
 
@@ -119,7 +119,7 @@ module.exports.showPaths=async function(req,res){
     try
     {   //fetch all paths
         var paths=await Paths.find({});
-        req.flash("info","Paths fetched!");
+       
         res.render("all_flight_paths",{paths:paths});
     }
     catch(err)

@@ -15,8 +15,25 @@ var bookingSchema=new Schema({
 
     path:{
             type:String,required:true
-         }
-
+         },
+    date:{
+            type:Date,required:true
+    },
+    start_time:{
+            type:String,required:true
+    },
+    end_time:{
+            type:String,required:true
+    },
+    journey_time:{
+            type:String,required:true
+    },
+    wait_time:{
+            type:String,required:true
+    },
+    travel_time:{
+            type:String,required:true
+    }
 
     },{timestamps:true})
 

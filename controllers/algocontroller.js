@@ -343,7 +343,8 @@ var all_intervals=[]
 
 b1=new Graph(15);
 
-function loadpath(){
+function loadpath()
+{
     PathInfo.find({},function(err,paths){
         for(path of paths){
             b1.addedge(path.source,path.destination,path.cost,path.distance,path.start_time,path.end_time)
@@ -358,7 +359,8 @@ loadpath()
 
 
 
-module.exports.deletePath=function(source,destination){
+module.exports.deletePath=function(source,destination)
+{
  
     b1.removeedge(source,destination);
     return 
@@ -367,7 +369,8 @@ module.exports.deletePath=function(source,destination){
 
 
 
-module.exports.updatePath=function(body){
+module.exports.updatePath=function(body)
+{
   
     b1.updateedge(body);
     return 
@@ -378,7 +381,8 @@ module.exports.updatePath=function(body){
 
 
 
-module.exports.addPath=function(req,res){
+module.exports.addPath=function(req,res)
+{
     if(b1.mapi[req.body.source]==undefined || b1.mapi[req.body.destination]==undefined){
         console.log("error in creating the path")
             req.flash("error",'Error in creating the Path')
@@ -401,9 +405,10 @@ module.exports.addPath=function(req,res){
 
 
 //function to evaluate all paths
-module.exports.path_eval=function(req,res){
+module.exports.path_eval=function(req,res)
+{
     try
-    {   
+    {  res.cookie('chosenDate', req.body.date);
         //set the arrays to empty
         //because they have already sotred previous search results
         distprice=[]
