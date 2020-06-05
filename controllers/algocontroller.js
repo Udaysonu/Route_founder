@@ -55,7 +55,7 @@ var all_intervals=[]
             this.adjmatrix= mat;
             //using mapi and revmapi to conver names to indices and vice versa     
             this.mapi={"Hyderabad":0,"Mumbai":1,"Delhi":2,"Jaipur":3,"Banglore":4,"Kochi":5,"Chennai":6,"Bhopal":7,"Amritsar":8,"Guwahati":9,"Srinagar":10,"Amaravati":11,"Vishakhapatanam":12,"Agra":13};
-            this.revmapi={0:"Hyderabad",1:"Mumbai",2:"Delhi",3:"Jaipur",4:"Banglore",5:"Kochi",6:"Chennai",7:"Bhopal",8:"Amritsar",9:"Guwahati",10:"Srinagar",11:"Amaravati",12:"Vishakhapatanam",14:"Agra"};
+            this.revmapi={0:"Hyderabad",1:"Mumbai",2:"Delhi",3:"Jaipur",4:"Banglore",5:"Kochi",6:"Chennai",7:"Bhopal",8:"Amritsar",9:"Guwahati",10:"Srinagar",11:"Amaravati",12:"Vishakhapatanam",13:"Agra"};
         }
     
     
@@ -396,6 +396,8 @@ module.exports.addPath=function(req,res)
             console.log("Error in creating the path");
             return res.redirect("back");
         }
+        b1.addedge(path.source,path.destination,path.cost,path.distance,path.start_time,path.end_time)
+
         req.flash("success","Path created successfully!")
         console.log("Path Created Succesfully");
         return res.redirect("back");
