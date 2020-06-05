@@ -17,7 +17,17 @@ const mailer=require("../mailer/nodemailer")
 //signin controller 
 module.exports.signin=function(req,res){
     // info={reciver:"udaysonubakka123@gmail.com","subject":"welcome",text:"text"}
-    res.render("signin");
+    //if user is already signed in then don't show sign in page
+    
+    if(req.isAuthenticated())
+    {
+        req.flash("info","You have already logged in ");
+        res.redirect("/user/routesearch");
+    }else
+    {
+        res.render("signin");
+    }
+   
 }
 
 
@@ -27,7 +37,17 @@ module.exports.signin=function(req,res){
 
 //signup controller
 module.exports.signup=function(req,res){
-    res.render("signup");
+    //if user is already signed in then don't show signup page
+    if(req.isAuthenticated())
+    {
+        req.flash("info","You have already logged in ");
+        res.redirect("/user/routesearch");
+    }
+    else
+    {
+        res.render("signup");
+    }
+   
 }
 
 
@@ -86,7 +106,7 @@ module.exports.createuser=async function(req,res){
 //function to logout
 module.exports.logout=function(req,res){
   try{
-    if(req.isAuthenticated)
+    if(req.isAuthenticated())
     {
         req.flash("success","You have logged out!!");
         req.logout();
@@ -115,8 +135,15 @@ module.exports.authenticate=function(req,res){
 
 //function to render search page
 module.exports.routesearch=function(req,res){
-    
+//if user is authenticated only then show him search page
+   if(req.isAuthenticated())
+   {
     res.render("search");
+   }
+   else
+   {
+    res.redirect("/user/signin");
+   }
 }
 
 

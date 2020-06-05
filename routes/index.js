@@ -3,11 +3,11 @@ const router=express.Router();
 const passportgoogle=require("../config/passport-google")
 const passport=require("../config/passport")
 const User=require("../models/usermodel")
-router.use('/algo',require("./algorithms"));
+router.use('/algo',passport.checkAuthenticatedUser,require("./algorithms"));
 router.use('/user',require("./users"))
-router.use("/cc",require("./customercare"));
-router.use("/booking",require("./booking"));
-router.use("/dashboard",require("./dashboard"));
+router.use("/cc",passport.checkAuthenticatedUser,require("./customercare"));
+router.use("/booking",passport.checkAuthenticatedUser,require("./booking"));
+router.use("/dashboard",passport.checkAuthenticatedUser,require("./dashboard"));
 router.get('/auth/google',
   passportgoogle.authenticate('google', { scope: 
       [ 'profile' ,'email'] }

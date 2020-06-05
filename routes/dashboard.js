@@ -1,6 +1,8 @@
+//import required modules
 const express=require('express');
 const router=express.Router();
-const dashboardController=require("../controllers/dashboardController")
+const dashboardController=require("../controllers/dashboardController");
+
 router.post("/specificPath",dashboardController.specificPath)
 router.post("/specificUser",dashboardController.specificUser)
 router.get("/deleteUser/:id",dashboardController.deleteUser)

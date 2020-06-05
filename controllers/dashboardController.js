@@ -24,25 +24,34 @@ const revmapi={0:"Hyderabad",1:"Mumbai",2:"Delhi",3:"Jaipur",4:"Banglore",5:"Koc
 module.exports.deletePath=async function(req,res)
 {
     try
-    {
-        //checking if current path exists or not
-        var path= await Paths.findById(req.params.id);
-        
-        //if path exists then delte the path in database and
-        //delete the edge in algorithm in algocontroller
-        if(path){
-                //deleting the path in database
-                await Paths.findByIdAndDelete(path.id);
+    {   
+        //Authorization check
+       if(req.user.email=="udaysonubakka123@gmail.com")
+        {
+                //checking if current path exists or not
+            var path= await Paths.findById(req.params.id);
             
-                //deleting edge in algo controller
-                await algoController.deletePath(path.source,path.destination);
-                req.flash("success","Path deleted successfully!!"); 
-        
-        }
-        else{
-                req.flash("error","Error in deleting Path!!");
-        }
-        return res.redirect("/dashboard/flightroutes/");
+            //if path exists then delte the path in database and
+            //delete the edge in algorithm in algocontroller
+            if(path){
+                    //deleting the path in database
+                    await Paths.findByIdAndDelete(path.id);
+                
+                    //deleting edge in algo controller
+                    await algoController.deletePath(path.source,path.destination);
+                    req.flash("success","Path deleted successfully!!"); 
+            
+            }
+            else{
+                    req.flash("error","Error in deleting Path!!");
+            }
+            return res.redirect("/dashboard/flightroutes/");
+       }
+       else
+       {
+           req.flash("error","UnAuthorized Access");
+           return res.redirect("back");
+       }
     }
     //raise error if encountered
     catch(err)
@@ -61,8 +70,14 @@ module.exports.deletePath=async function(req,res)
 //function to update flight path's values in database and algorithm in algocontroller
 module.exports.updatePath=async function(req,res)
 {
-    try
-    {
+    try 
+    {   
+        //Authorization check
+        if(req.user.email!="udaysonubakka123@gmail.com")
+        {
+            req.flash("error",'Unauthorized Access!!');
+           return res.redirect("back");
+        }
                 //If either Source or Destination is empty then raise the error and return;
         if(mapi[req.body.source]==undefined || mapi[req.body.destination]==undefined)
         {             
@@ -117,7 +132,15 @@ module.exports.updatePath=async function(req,res)
 module.exports.showPaths=async function(req,res){
 
     try
-    {   //fetch all paths
+    {   
+        //Authorization check
+        if(req.user.email!="udaysonubakka123@gmail.com")
+        {
+            req.flash("error",'Unauthorized Access!!');
+           return res.redirect("back");
+        }
+
+        //fetch all paths
         var paths=await Paths.find({});
        
         res.render("all_flight_paths",{paths:paths});
@@ -136,6 +159,14 @@ module.exports.showPaths=async function(req,res){
 module.exports.deleteUser=async function(req,res){
     
    try{
+        //Authorization check
+        if(req.user.email!="udaysonubakka123@gmail.com")
+        {
+            req.flash("error",'Unauthorized Access!!');
+        return res.redirect("back");
+        }
+
+
        //deleting the required user
        //finding the user
         user=await User.findById(req.params.id);
@@ -165,6 +196,13 @@ module.exports.deleteUser=async function(req,res){
 //function to render page (addpath);
 module.exports.addpath=function(req,res){
     try{
+
+        //Authorization check
+        if(req.user.email!="udaysonubakka123@gmail.com")
+        {
+            req.flash("error",'Unauthorized Access!!');
+           return res.redirect("back");
+        }
         res.render("addpath");
     }
     catch(err){
@@ -179,7 +217,13 @@ module.exports.addpath=function(req,res){
 //function to get specific flight path
 module.exports.specificPath=async function(req,res){
    try 
-   {
+   {    
+        //Authorization check
+        if(req.user.email!="udaysonubakka123@gmail.com")
+        {
+            req.flash("error",'Unauthorized Access!!');
+        return res.redirect("back");
+        }
         var details={}
         
         //small check to remove undefined values
@@ -208,7 +252,13 @@ module.exports.specificPath=async function(req,res){
 //function to get specific user
 module.exports.specificUser=async function(req,res){
     try
-    {
+    {   
+        //Authorization check
+            if(req.user.email!="udaysonubakka123@gmail.com")
+            {
+                req.flash("error",'Unauthorized Access!!');
+            return res.redirect("back");
+            }
             var details={};
             //small check to remove undefined while searching
             if(req.body.name!=""){
@@ -238,7 +288,13 @@ module.exports.specificUser=async function(req,res){
 //function to updateuser details from dashboard
 module.exports.updateUser=async function(req,res){
     try
-    {   
+    {    
+        //Authorization check
+        if(req.user.email!="udaysonubakka123@gmail.com")
+        {
+            req.flash("error",'Unauthorized Access!!');
+           return res.redirect("back");
+        }
         //since our data is multi-part and contains files we cannot get data using normal req.body
         //so we user this User.uploadedAvatar to get the data
         User.uploadedAvatar(req,res,async function(err){
@@ -284,7 +340,12 @@ module.exports.updateUser=async function(req,res){
 module.exports.showUsers=async function(req,res)
 {
     try
-    {
+    {   //Authorization check
+        if(req.user.email!="udaysonubakka123@gmail.com")
+        {
+            req.flash("error",'Unauthorized Access!!');
+           return res.redirect("back");
+        }
         //fetch all users from database
         var users=await User.find({});
         req.flash("info","Fetched Users!")
@@ -301,7 +362,15 @@ module.exports.showUsers=async function(req,res)
 //function to fetch all bookings
 module.exports.showBookings=async function(req,res){
     try
-    {   //fetch all booking from database;
+    {   
+        //Authorization check
+        if(req.user.email!="udaysonubakka123@gmail.com")
+        {
+            req.flash("error",'Unauthorized Access!!');
+           return res.redirect("back");
+        }
+        
+        //fetch all booking from database;
         var bookings = await Booking.find({}).populate("user_id").sort({createdAt:-1});
         req.flash("info","Fetched Bookings!")
         res.render("booking_dashboard",{bookings:bookings});

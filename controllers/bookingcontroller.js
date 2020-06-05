@@ -8,19 +8,24 @@ var nodemailer=require("../mailer/nodemailer");
 
 //funciton to return all boookings 
 module.exports.showBookings=function(req,res)
-{
-
-    Booking.find({user_id:req.user.id}).sort({createdAt:-1}).exec(function(err,bookings)
-    {
-        if(err)
+{   
+    if(req.isAuthenticated()){
+        Booking.find({user_id:req.user.id}).sort({createdAt:-1}).exec(function(err,bookings)
         {
-            
-            console.log("Error in bookingcontroller->showBookings",err);
-        }
- 
-        res.render('check_bookings',{bookings:bookings});
-    })
-
+            if(err)
+            {
+                
+                console.log("Error in bookingcontroller->showBookings",err);
+            }
+     
+            res.render('check_bookings',{bookings:bookings});
+        })
+    
+    }
+    else
+    {
+        res.redirect("/user/signin")
+    }
 }
 
 
@@ -28,7 +33,9 @@ module.exports.showBookings=function(req,res)
 //function to create booking in te database;
 module.exports.orderbook=function(req,res)
 {   
-    req.body.date=req.cookies.chosenDate
+    if(req.isAuthenticated())
+    {
+        req.body.date=req.cookies.chosenDate
     //create booking with given details
     Booking.create(req.body,function(err,book)
     {   
@@ -66,6 +73,10 @@ module.exports.orderbook=function(req,res)
         res.redirect("/booking/showbooking");
         
     });
-
+    }
+    else
+    {
+        res.redirect("/user/signin");
+    }
 
 }

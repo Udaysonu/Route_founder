@@ -41,10 +41,12 @@ passport.setAuthenticatedUser=function(req,res,next){
       next();
 }
 passport.checkAuthenticatedUser=function(req,res,next){
-  if(req.isAuthenticated()){
+  if(req.isAuthenticated())
+  {
       next();
   }
-  else{     
+  else
+  {     
       return res.redirect('/user/signin');
   }}
 module.exports=passport
