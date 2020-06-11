@@ -5,6 +5,10 @@ const passport=require("../config/passport");
 //routing the url to their respective functions
 router.get('/signin',usercontroller.signin);
 router.get("/signup",usercontroller.signup);
+router.get("/forgot_password",function(req,res){
+    return res.render("forgot_password.ejs");
+})
+router.post("/password_recovery",usercontroller.password_recovery)
 router.post("/createuser",usercontroller.createuser);
 router.post("/authenticate",passport.authenticate('local',{
     failureRedirect:"back"

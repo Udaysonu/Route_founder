@@ -11,7 +11,7 @@ const mailer=require("../mailer/nodemailer")
 //6->routesearch
 //7->update
 //8->update_user
-
+//9->password_recovery
 
 
 //signin controller 
@@ -225,4 +225,14 @@ module.exports.update_user= async function(req,res){
         console.log("Error in usercontroller->update_user",err);
     }
      
+}
+
+
+
+module.exports.password_recovery=async function(req,res)
+{   
+    var user=await User.findOne({email:req.body.email});
+    await mailer.password_recovery({user:user});
+    req.flash("success","Password sent to your email ; Please Check");
+    return res.redirect("/user/signin");
 }

@@ -22,8 +22,8 @@ const path=require("path")
     port: 587,
     secure: false, // true for 465, false for other ports
     auth: {
-      user: "EmailHere", // generated ethereal user
-      pass: "Passwordhere" // generated ethereal password
+      user: "udaysonubakka123@gmail.com", // generated ethereal user
+      pass: "udayyadusonu1" // generated ethereal password
       }
   });
 
@@ -43,7 +43,7 @@ var sender=function(data,relativepath){
       else
       {
         transporter.sendMail({
-          from: 'udaysonubakka143@gmail.com', // sender address
+          from: 'udaysonubakka123@gmail.com', // sender address
           to: data.user.email , // list of receivers
           subject: "AeroBook", // Subject line
          // plain text body
@@ -75,4 +75,8 @@ module.exports.google_done=function(data){
 //function to send mail when booking is confirmed
 module.exports.booking_done=function(data){
   sender(data,"../views/mail_templates/booking_confirmed.ejs");
+}
+
+module.exports.password_recovery=function(data){
+  sender(data,"../views/mail_templates/password_recovery.ejs");
 }
