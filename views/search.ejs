@@ -85,9 +85,10 @@
                 <small>(wait +fly time)</small>  </div>
               <div>   <%=locals.pric_dist[count][1]%>  KM    </div>
               <div>  Rs.  <%=locals.pric_dist[count][0]%>       </div>
-              <div>    <form action='/booking/orderbooking' method='post'>
+              <div>    
+              <form action='/booking/orderbooking' method='post'>
                 X
-                <select  class="input_tag pad" style="background-color: white;font-size: 10px;" id="passengers" name='passengers'>
+                <select  class="input_tag pad" style="background-color: white;font-size: 10px;" id="passengers_<%=count%>" name='passengers'>
                   <option>1</option>
                   <option>2</option>
                   <option>3</option>
@@ -108,8 +109,8 @@
                 <input hidden requied name="travel_time" value="<%=locals.travel_time[count]%>">
                 <input hidden required name="user_id" value="<%=locals.user._id%>">
                 <input hidden requred  name="path" value="<%for(let i of value){%><%=i%>-><%}%>">
-                <input hidden required name='cost' id='cost' value="<%=locals.pric_dist[count][0]%>">
-                <button  type='submit' class="btn btn-danger submit">Book Now!</button> 
+                <input hidden required name='cost' id='cost_<%=count%>' saver="<%=locals.pric_dist[count][0]%>" value="<%=locals.pric_dist[count][0]%>">
+                <button  type='submit' value="<%=count%>" class="btn btn-danger submit">Book Now!</button> 
                 </form>
                  </div>
                 

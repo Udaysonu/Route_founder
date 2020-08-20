@@ -228,7 +228,7 @@ module.exports.update_user= async function(req,res){
 }
 
 
-
+//function to send password when clicked on forgot password to entered email address
 module.exports.password_recovery=async function(req,res)
 {   
     var user=await User.findOne({email:req.body.email});
