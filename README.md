@@ -63,8 +63,8 @@ This project is practical implementation of data structures. This website finds 
  <img src="https://github.com/Udaysonu/Route_founder/blob/master/webreadme/one7.JPG">
  
  * Sending Confirmation Mails
-  <img src="https://github.com/Udaysonu/Route_founder/blob/master/webreadme/two3.JPG" width="60%">
- <img src="https://github.com/Udaysonu/Route_founder/blob/master/webreadme/two4.JPG" width="60%">
+  <img src="https://github.com/Udaysonu/Route_founder/blob/master/webreadme/two3.JPG" width="80%">
+ <img src="https://github.com/Udaysonu/Route_founder/blob/master/webreadme/two4.JPG" width="80%">
 
  
  ## Tools and Technologies used
