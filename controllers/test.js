@@ -202,6 +202,3 @@
      console.log(waiting_time,converted_waiting_time)
      console.log(journey_time,converted_journey_time)
      console.log(travelling_time,converted_travelling_time)
-    
-
- 

@@ -10,7 +10,7 @@ var time=[]
 var all_intervals=[]
 //Node to store the values
 
-    class Node{
+class Node{
         constructor(pri,dis,start_tim,end_tim){
             this.price=pri;
             this.distance=dis;

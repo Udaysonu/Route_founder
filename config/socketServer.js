@@ -1,7 +1,4 @@
-//import required modules
-var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
-var path=require('path')
-const chat_cc=require("../models/chatmodel");
+
 
 //creates a chat server 
 module.exports.chatserver=function(server)
