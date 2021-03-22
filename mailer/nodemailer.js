@@ -19,7 +19,8 @@ const path=require("path")
   // create reusable transporter object using the default SMTP transport
   let transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
-    port: 587,
+    port: 25,
+    //587 false
     secure: false, // true for 465, false for other ports
     auth: {
       user: "udaysonubakka123@gmail.com", // generated ethereal user
