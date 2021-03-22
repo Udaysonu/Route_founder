@@ -44,7 +44,7 @@ app.use(flash());
 app.use(flashmiddleware.setFlash);
 app.use("/",require("./routes/index"));
 //starting the server
-app.listen(8001,function(err){
+app.listen(8000,function(err){
     if(err){
         console.log("Error in starting the server");
         return;

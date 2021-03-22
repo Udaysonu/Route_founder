@@ -28,6 +28,7 @@
         </div>
         
         <%for(customer of customers){%>
+          console.log(customers)
           <div data-value="<%=customer.chat_id.id%>" class="customer_chat_list  friend-drawer friend-drawer--onhover">
             <%if(customer.chat_id.avatar){%>
               <img class="profile-image" src="<%=customer.chat_id.avatar%>" alt="">

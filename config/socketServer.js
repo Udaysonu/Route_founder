@@ -1,3 +1,5 @@
+var chat_cc=require("../models/chatmodel")
+
 
 
 //creates a chat server 
