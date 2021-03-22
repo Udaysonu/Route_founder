@@ -1,5 +1,6 @@
 # Route_founder
 Practical implementation of Data Structures Like Graphs, Linked List, Array, etc,.
+## There is other version of this project using react.js LINK:--  https://github.com/Udaysonu/Route_founder_React_version
 
 ## Project Introduction
 This project is practical implementation of data structures. This website finds the route between various airports located in different parts of India. It connects the nodes(cities)
@@ -32,13 +33,15 @@ This project is practical implementation of data structures. This website finds 
  
  <img src="https://github.com/Udaysonu/Route_founder/blob/master/webreadme/three.JPG">
  
+ <img src="https://github.com/Udaysonu/Route_founder/blob/master/webreadme/four.JPG">
+
  * Allowing user to book the flights
  
  <img src="https://github.com/Udaysonu/Route_founder/blob/master/webreadme/five.JPG">
  
  * Showing all the tickets booked by the user
  
- <img src="https://github.com/Udaysonu/Route_founder/blob/master/webreadme/one2.JPG">
+ <img src="https://github.com/Udaysonu/Route_founder/blob/master/webreadme/six.JPG">
  
   
  * Updating User information
@@ -51,16 +54,28 @@ This project is practical implementation of data structures. This website finds 
  
  * View & Search all the tickets ( Admin View)
  
- <img src="https://github.com/Udaysonu/Route_founder/blob/master/webreadme/six.JPG">
+ <img src="https://github.com/Udaysonu/Route_founder/blob/master/webreadme/one2.JPG">
  
- * View & Search all the Users (Admin View)
+ * View & Search & Update all the Users (Admin View)
  
  <img src="https://github.com/Udaysonu/Route_founder/blob/master/webreadme/one6.JPG">
+ 
+ * View & Search & Update all the Routes (Admin view)
+
+ <img src="https://github.com/Udaysonu/Route_founder/blob/master/webreadme/one5.JPG">
  
  * Add Path between two different locations (Admin View)
  
  <img src="https://github.com/Udaysonu/Route_founder/blob/master/webreadme/one7.JPG">
  
+ * Chat with Customer Care ( Customer View ):
+ 
+ <img src="https://github.com/Udaysonu/Route_founder/blob/master/webreadme/one3.JPG">
+
+ * Chat with Customer ( Admin View ):
+ 
+  <img src="https://github.com/Udaysonu/Route_founder/blob/master/webreadme/oneone.JPG">
+
  * Sending Confirmation Mails
   <img src="https://github.com/Udaysonu/Route_founder/blob/master/webreadme/two3.JPG" width="80%">
  <img src="https://github.com/Udaysonu/Route_founder/blob/master/webreadme/two4.JPG" width="80%">
@@ -68,6 +83,9 @@ This project is practical implementation of data structures. This website finds 
  
  ## Tools and Technologies used
   * NodeMailer for sending confirmation mails
+  * Google Authenticaton through google Auth
+  * PassportJs for authentication
+  * Chat with customer care thorugh sockets.io
   * Bootstrap for designing webpages
   * Node.js (express.js) Backend
   * Html, CSS , Javascript, Jquery for designing webpages
