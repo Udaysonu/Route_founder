@@ -2,10 +2,12 @@ var GoogleStrategy = require( 'passport-google-oauth2' ).Strategy;
 var passport=require("passport")
 var mailer=require("../mailer/nodemailer");
 var User=require("../models/usermodel")
+var url="http://3.142.51.143:8000/auth/google/callback"
+// var url="http://localhost:8000/auth/google/callback"
 passport.use(new GoogleStrategy({
     clientID:     "250691605211-4dlsk0c54esi9ao03pu820ikksv7bjkq.apps.googleusercontent.com",
     clientSecret: "rgRY0uOzTr-oobXP0KJ8DIXy",
-    callbackURL: "http://localhost:8000/auth/google/callback",
+    callbackURL: url,
     passReqToCallback   : true
   },
   function(req, accessToken, refreshToken, profile, done) {
