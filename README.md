@@ -89,6 +89,8 @@ This project is practical implementation of data structures. This website finds 
   * Bootstrap for designing webpages
   * Node.js (express.js) Backend
   * Html, CSS , Javascript, Jquery for designing webpages
+  * Using Multer to store the files
+  * Using Flashmessages to show the notifications
    
  ## Challenges in the project
   
